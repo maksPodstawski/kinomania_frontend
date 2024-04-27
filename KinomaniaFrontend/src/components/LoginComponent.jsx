@@ -13,10 +13,14 @@ function LoginComponent() {
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     }
+    const saveTokenToLocalStorage = (token) => {
+        localStorage.setItem('token', token);
+    };
 
     const handleSubmit = async () => {
         const token = await SendLoginRequest(login, password);
         setToken(token);
+        saveTokenToLocalStorage(token);
     }
 
     return (
