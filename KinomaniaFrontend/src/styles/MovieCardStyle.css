@@ -1,0 +1,38 @@
+.movie-card {
+    display: flex;
+    background-color: #ef3232;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    max-width: 450px;
+    min-width: 450px;
+
+}
+
+.movie-card img {
+    width: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+.movie-info {
+    padding: 20px;
+}
+
+.movie-info h2 {
+    margin-top: 0;
+}
+
+.movie-info p {
+    margin: 5px 0;
+}
+
+.movie-info strong {
+    font-weight: bold;
+}
+.movie-description{
+
+}
