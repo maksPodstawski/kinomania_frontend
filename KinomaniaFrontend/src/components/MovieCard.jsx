@@ -3,6 +3,7 @@ import '../styles/MovieCardStyle.css'
 
 const MovieCard = ({ movie }) => {
     return (
+        <marquee>
         <div className="movie-card">
             <img src={movie.img_url} alt={movie.title} />
             <div className="movie-info">
@@ -13,6 +14,7 @@ const MovieCard = ({ movie }) => {
                 <p><strong>Czas trwania:</strong> {movie.duration} min</p>
             </div>
         </div>
+        </marquee>
     );
 }
 

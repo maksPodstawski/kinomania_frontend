@@ -32,9 +32,9 @@ const Header = () => {
                 <>
                     <div className="header">
                         <div className="header-logo">
-                            <img src={kinomaniaLogo} alt="Kinomania Logo" width="100" height="100" onClick={goHome}/>
+                            <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                         </div>
-                        <div className="header-username">
+                        <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
                             <button className="button-panel" onClick={handlePanel}>Panel</button>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
@@ -49,9 +49,9 @@ const Header = () => {
                 <>
                     <div className="header">
                         <div className="header-logo">
-                            <img src={kinomaniaLogo} alt="Kinomania Logo" width="100" height="100" onClick={goHome}/>
+                            <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                         </div>
-                        <div className="header-username">
+                        <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
                         </div>
@@ -66,7 +66,7 @@ const Header = () => {
             <>
                 <div className="header">
                     <div className="header-logo">
-                        <img src={kinomaniaLogo} alt="Kinomania Logo" width="100" height="100" onClick={goHome}/>
+                        <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                     </div>
                     <div className="header-buttons">
                         <button className="loginComponent" onClick={goToLogin}>Zaloguj się</button>
