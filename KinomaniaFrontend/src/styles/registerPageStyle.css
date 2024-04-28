@@ -4,7 +4,7 @@ body{
     align-items: center;
 }
 
-.login-form {
+.register-form {
     width: 300px;
     padding: 30px;
     background-color: #ba2b2b;
@@ -15,14 +15,14 @@ body{
     align-items: center;
     flex-direction: column;
 }
-.login-form input {
+.register-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #cccccc;
 }
-.login-form button {
+.register-form button {
     width: 100%;
     padding: 10px;
     border-radius: 5px;

@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import MovieCard from "../components/MovieCard.jsx";
+import Header from "../components/Header.jsx";
 
 function HomeSite() {
 
     const [movies, setMovies] = useState([]);
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -22,20 +22,10 @@ function HomeSite() {
 
         fetchMovies();
     }, []);
-        const goToLogin = () => {
-            navigate('/login');
-        }
-        const goToRegister = () => {
-            navigate('/register');
-        }
-
 
         return (
             <>
-                <div className="login-form">
-                    <button className="loginComponent" onClick={goToLogin}>Zaloguj się</button>
-                    <button className="registerComponent" onClick={goToRegister}>Zarejestruj się</button>
-                </div>
+                <Header/>
                 <div>
                     <h2>Filmy:</h2>
                     <div className="movies-list">

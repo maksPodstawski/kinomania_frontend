@@ -5,10 +5,10 @@ const LoggingPage = () => {
 
     return  (
         <div className="login-form">
-        <h2>Login:</h2>
-        <input type="text" placeholder="Wprowadź login" required />
-        <input type="password" placeholder="Wprowadź hasło" required  />
-        <button type="submit">Zaloguj się</button>
+            <h2>Login:</h2>
+            <input type="text" placeholder="Wprowadź login" required />
+            <input type="password" placeholder="Wprowadź hasło" required  />
+            <button type="submit">Zaloguj się</button>
         </div>);
 }
 

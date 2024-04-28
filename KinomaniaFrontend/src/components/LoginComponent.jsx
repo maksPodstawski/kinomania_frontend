@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
 import SendLoginRequest from "../service/SendLoginRequest.jsx";
+import '../styles/loggingPageStyles.css'
+import {jwtDecode} from "jwt-decode";
+import {useNavigate} from "react-router-dom";
 
 function LoginComponent() {
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
     const [token, setToken] = useState(null);
+
+    const navigate = useNavigate();
 
     const handleLoginChange = (event) => {
         setLogin(event.target.value);
@@ -15,12 +20,19 @@ function LoginComponent() {
     }
     const saveTokenToLocalStorage = (token) => {
         localStorage.setItem('token', token);
+        const decoded = jwtDecode(token)
+        localStorage.setItem('username', decoded["username"]);
+        localStorage.setItem('authorities', decoded["authorities"]);
+        console.log(localStorage.getItem('authorities'));
     };
 
     const handleSubmit = async () => {
         const token = await SendLoginRequest(login, password);
         setToken(token);
         saveTokenToLocalStorage(token);
+        if(token !== ""){
+            navigate('/');
+        }
     }
 
     return (

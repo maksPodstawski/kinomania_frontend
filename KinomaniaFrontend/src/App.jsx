@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RegisterComponent from "./components/RegisterComponent.jsx";
 import HomeSite from "./sites/HomeSite.jsx";
 import AddMoviePage from "./sites/AddMoviePage.jsx";
+import PanelSite from "./sites/PanelSite.jsx";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/login" element={<LoginComponent /> } />
                 <Route path="/register" element={<RegisterComponent />} />
                 <Route path="/addmovie" element={<AddMoviePage/>}/>
+                <Route path="/panel" element={<PanelSite />}/>
             </Routes>
         </Router>
 
