@@ -38,7 +38,7 @@ function AddMoviePage() {
             duration: duration,
             img_url: img,
         }
-        const url = 'http://localhost:8080/api/v1/admin/addMovie';
+        const url = 'http://localhost:8080/api/v1/panel/addMovie';
 
         const token = localStorage.getItem('token');
 
