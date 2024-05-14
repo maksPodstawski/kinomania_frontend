@@ -1,3 +1,6 @@
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/eye.css');
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/eye-alt.css');
+
 body{
     display: flex;
     justify-content: center;
@@ -29,4 +32,24 @@ body{
     border: none;
     color: #ffffff;
     background-color: #007BFF;
+}
+
+.input-container {
+    position: relative;
+    width: 320px;
+    display: flex;
+}
+
+.input-container input {
+    width: 100%;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    bottom: -5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
