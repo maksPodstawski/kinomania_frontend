@@ -14,12 +14,14 @@ const Header = () => {
     const goToRegister = () => {
         navigate('/register');
     }
-
+    const goToCinemas = () => {
+        navigate('/cinemas');
+    }
     const handleLogout = () => {
         localStorage.clear();
         navigate('/');
     }
-    const handlePanel = () =>{
+    const goToPanel = () =>{
         navigate('/panel');
     }
     const goHome = () =>{
@@ -36,15 +38,15 @@ const Header = () => {
                         </div>
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
-                            <button className="button-panel" onClick={handlePanel}>Panel</button>
+                            <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
+                            <button className="button-panel" onClick={goToPanel}>Panel</button>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
                         </div>
                     </div>
                 </>
             )
 
-        }
-        else {
+        } else {
             return (
                 <>
                     <div className="header">
@@ -53,6 +55,7 @@ const Header = () => {
                         </div>
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
+                            <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
                         </div>
                     </div>
@@ -69,6 +72,7 @@ const Header = () => {
                         <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                     </div>
                     <div className="header-buttons">
+                        <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                         <button className="loginComponent" onClick={goToLogin}>Zaloguj się</button>
                         <button className="registerComponent" onClick={goToRegister}>Zarejestruj się</button>
                     </div>

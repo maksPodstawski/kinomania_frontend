@@ -8,7 +8,7 @@ function LoginComponent() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [token, setToken] = useState(null);
-    const [showPassword, setShowPassword] = useState(false); // New state to toggle password visibility
+    const [showPassword, setShowPassword] = useState(false);
 
     const navigate = useNavigate();
 
@@ -63,7 +63,7 @@ function LoginComponent() {
                 />
                 <span className="toggle-password" onClick={togglePasswordVisibility}>
         {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
-    </span>
+            </span>
             </div>
             <br />
             <button onClick={handleSubmit} type="submit">
