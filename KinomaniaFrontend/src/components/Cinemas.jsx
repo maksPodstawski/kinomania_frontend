@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import '../styles/cinemasStyles.css'
 import SendCinemasRequest from "../service/SendCinemasRequest.js";
 import Header from "./Header.jsx";
+import MovieCard from "./MovieCard.jsx";
+import CinemasCard from "./CinemasCard.jsx";
 
 const Cinemas = ({ cinema }) => {
     const [cinemas, setCinemas] = useState([]);
@@ -40,7 +42,8 @@ const Cinemas = ({ cinema }) => {
                     onChange={handleSearchChange}
                 />
                 {filteredCinemas.map(cinema => (
-                    <p>{cinema.city}</p>
+                    // <p>{cinema.city}</p>
+                    <CinemasCard key={cinema.cinema_id} cinema={cinema}/>
                 ))}
             </div>
         </>
