@@ -7,6 +7,7 @@ import HomeSite from "./sites/HomeSite.jsx";
 import AddMoviePage from "./sites/AddMoviePage.jsx";
 import PanelSite from "./sites/PanelSite.jsx";
 import Cinemas from "./components/Cinemas.jsx";
+import SeatReservationPanel from "./components/SeatReservationPanel.jsx";
 import ScreeningForCinema from "./components/ScreeningForCinema.jsx";
 
 
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/panel" element={<PanelSite />}/>
                 <Route path="/cinemas" element={<Cinemas />}/>
                 <Route path="/getScreening/:city" element={<ScreeningForCinema />} />
+                <Route path="/reservation" element={<SeatReservationPanel />}/>
             </Routes>
         </Router>
 
