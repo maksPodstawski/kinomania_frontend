@@ -5,6 +5,7 @@ import Header from "./Header.jsx";
 
 const Cinemas = ({ cinema }) => {
     const [cinemas, setCinemas] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         const fetchCinemas = async () => {
@@ -20,15 +21,28 @@ const Cinemas = ({ cinema }) => {
         fetchCinemas();
     }, []);
 
+    const handleSearchChange = (event) => {
+        setSearch(event.target.value);
+    };
+
+    const filteredCinemas = cinemas.filter(cinema =>
+        cinema.city.toLowerCase().includes(search.toLowerCase())
+    );
 
     return (
         <>
-        <Header/>
-        <div>
-            {cinemas.map(cinema => (
-                <p>{cinema.city}</p>
-            ))}
-        </div>
+            <Header/>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Wyszukaj kino"
+                    value={search}
+                    onChange={handleSearchChange}
+                />
+                {filteredCinemas.map(cinema => (
+                    <p>{cinema.city}</p>
+                ))}
+            </div>
         </>
     );
 }
