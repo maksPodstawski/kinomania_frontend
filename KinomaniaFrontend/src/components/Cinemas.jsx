@@ -28,7 +28,8 @@ const Cinemas = ({ cinema }) => {
     };
 
     const filteredCinemas = cinemas.filter(cinema =>
-        cinema.city.toLowerCase().includes(search.toLowerCase())
+        cinema.city.toLowerCase().includes(search.toLowerCase()) ||
+        cinema.address.toLowerCase().includes(search.toLowerCase())
     );
 
     return (

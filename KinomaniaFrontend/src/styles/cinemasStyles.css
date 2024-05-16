@@ -1,9 +1,10 @@
 .cinemas-container {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
-
 .cinema-card {
     flex: 0 0 30%;
     margin-bottom: 20px;
