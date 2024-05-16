@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/MovieCardStyle.css'
 import MovieCard from "./MovieCard.jsx";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import SendMovieByIdRequest from "../service/SendMovieByIdRequest.jsx";
 
 const ScreeningCard = ({ screening }) => {
 
-
+    const navigate = useNavigate();
 
 
     const [movieById, setMovieById] = useState([]);
@@ -29,9 +29,12 @@ const ScreeningCard = ({ screening }) => {
         }
     },);
 
+    const goToReservation = (city) => {
+        navigate ('/reservation');
+    }
 
     return (
-        <div className="movie-card">
+        <div onClick={() => goToReservation()} className="movie-card">
             <div className="movie-info">
 
                 {cinemaObject != null ? (

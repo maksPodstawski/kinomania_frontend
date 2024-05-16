@@ -48,7 +48,8 @@ function AddMoviePage() {
 
         axios.post(url, movieData, {headers: headers})
             .then(response => {
-                console.log('Film dodany:', response.data);
+                console.log('Film dodany:', response.data)
+                alert("Dodano film");
             })
             .catch(error => {
                 console.error('Błąd podczas dodawania filmu:', error);
