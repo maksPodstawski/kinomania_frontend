@@ -5,6 +5,8 @@ import Header from "./Header.jsx";
 import MovieCard from "./MovieCard.jsx";
 import CinemasCard from "./CinemasCard.jsx";
 
+//todo - przenieść plik do sites (components -> sites)
+
 const Cinemas = ({ cinema }) => {
     const [cinemas, setCinemas] = useState([]);
     const [search, setSearch] = useState('');
@@ -38,7 +40,7 @@ const Cinemas = ({ cinema }) => {
             <br/>
             <br/>
             <div>
-                <h1>Sprawdź czy mamy kino w twojej lokalizacji!</h1>
+                <h1>Sprawdź czy mamy kino w twoim mieście!</h1>
                 <br/>
                 <input
                     type="text"
@@ -47,11 +49,15 @@ const Cinemas = ({ cinema }) => {
                     onChange={handleSearchChange}
                 />
                 <div className="cinemas-container">
-                    {filteredCinemas.map(cinema => (
-                        <div className="cinema-card">
-                            <CinemasCard key={cinema.cinema_id} cinema={cinema}/>
-                        </div>
-                    ))}
+                    {filteredCinemas && filteredCinemas.length > 0 ? (
+                        filteredCinemas.map(cinema => (
+                            <div className="cinema-card">
+                                <CinemasCard key={cinema.cinema_id} cinema={cinema}/>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Niestety nie mamy jeszcze w {search} kina, ale to tylko kwestia czasu!</p>
+                    )}
                 </div>
             </div>
         </>
