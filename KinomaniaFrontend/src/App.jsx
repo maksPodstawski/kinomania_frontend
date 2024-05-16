@@ -29,6 +29,7 @@ function App() {
                 <Route path="/getScreening/:city" element={<ScreeningForCinema />} />
                 <Route path="/reservation" element={<SeatReservationPanel />}/>
                 <Route path="/removemovie" element={<RemoveMoviePage />}/>
+                <Route path="/reservation/:screening_id" element={<SeatReservationPanel />}/>
             </Routes>
         </Router>
 

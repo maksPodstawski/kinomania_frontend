@@ -29,12 +29,12 @@ const ScreeningCard = ({ screening }) => {
         }
     },);
 
-    const goToReservation = (city) => {
-        navigate ('/reservation');
+    const goToReservation = (screening_id) => {
+        navigate (`/reservation/${screening_id}`);
     }
 
     return (
-        <div onClick={() => goToReservation()} className="movie-card">
+        <div onClick={() => goToReservation(screening.screening_id)} className="movie-card">
             <div className="movie-info">
 
                 {cinemaObject != null ? (

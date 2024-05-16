@@ -1,5 +1,11 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import '../styles/SeatReservationPanel.css';
+import SendSeatsRequest from "../service/SendSeatsRequest.js";
+import {useParams} from "react-router-dom";
+import SendScreeningByIdRequest from "../service/SendScreeningByIdRequest.js";
+
+
+
 
 const Seat = ({ id, row, number, selected, onSelect }) => {
     return (
@@ -15,6 +21,12 @@ const Seat = ({ id, row, number, selected, onSelect }) => {
 const SeatReservationPanel = () => {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [numRows] = useState(5);
+
+    let {screening_id} = useParams();
+
+
+
+
 
     const seatsLayout = [];
     const numSeatsPerRow = 10;
@@ -65,6 +77,61 @@ const SeatReservationPanel = () => {
 
         return rows;
     };
+
+
+
+    const [screening, setScreening] = useState([]);
+
+
+    useEffect(() => {
+
+        const fetchScreening = async () => {
+            try {
+                const screeningData = await SendScreeningByIdRequest(screening_id);
+                console.log(screeningData);
+                setScreening(screeningData);
+
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            }
+        };
+        if (screening != null){fetchScreening();}
+    }, []);
+
+    const [seats, setSeats] = useState([]);
+
+    useEffect(() => {
+
+        const fetchSeats = async (id) => {
+            try {
+                const seatsData = await SendSeatsRequest(id);
+                console.log(seatsData);
+                setSeats(seatsData);
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            }
+        };
+
+
+        const fetchScreening = async () => {
+            try {
+                const screeningData = await SendScreeningByIdRequest(screening_id);
+                console.log(screeningData.room.room_id);
+                let id = screeningData.room.room_id;
+                setScreening(screeningData);
+                if (seats != null){fetchSeats(id);}
+            } catch (error) {
+                console.error("Error fetching movies:", error);
+            }
+        };
+        if (screening != null){fetchScreening();}
+
+
+        console.log("ASD");
+        console.log(seats);
+    }, []);
+
+
 
     return (
         <div className="seat-selection-panel">

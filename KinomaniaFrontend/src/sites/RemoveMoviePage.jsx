@@ -11,6 +11,7 @@ function RemoveMoviePage() {
             const moviesData = await SendMoviesRequest();
             console.log(moviesData);
             setMovies(moviesData);
+            setSelectedMovie(moviesData[0].movie_id);
         } catch (error) {
             console.error("Error fetching movies:", error);
         }
@@ -24,6 +25,7 @@ function RemoveMoviePage() {
     const handleMovieChange = (event) => {
         setSelectedMovie(event.target.value);
     }
+
 
     const handleSubmit = async () => {
         const url = `http://localhost:8080/api/v1/panel/removeMovie/${selectedMovie}`;

@@ -29,6 +29,11 @@ function AddMoviePage() {
         setImg(event.target.value);
     }
 
+    const refreshPage = () => {
+        window.location.reload();
+    };
+
+
     const handleSubmit = async () => {
         const movieData = {
             title: title,
@@ -46,10 +51,13 @@ function AddMoviePage() {
             Authorization: `Bearer ${token}`,
         }
 
+
+
         axios.post(url, movieData, {headers: headers})
             .then(response => {
                 console.log('Film dodany:', response.data)
                 alert("Dodano film");
+                refreshPage();
             })
             .catch(error => {
                 console.error('Błąd podczas dodawania filmu:', error);
