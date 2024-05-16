@@ -7,6 +7,7 @@ import Header from "../components/Header.jsx";
 function HomeSite() {
 
     const [movies, setMovies] = useState([]);
+    const [search, setSearch] = useState('');
 
 
     useEffect(() => {
@@ -23,23 +24,34 @@ function HomeSite() {
         fetchMovies();
     }, []);
 
-        return (
-            <>
-                <Header/>
-                <div>
-                    <h2>Filmy:</h2>
-                    <div className="movies-list">
-                        {movies && movies.length > 0 ? (
-                            movies.map(movie => (
-                                <MovieCard key={movie.movie_id} movie={movie}/>
-                            ))
-                        ) : (
-                            <p>Ładowanie...</p>
-                        )}
-                    </div>
-                </div>
-            </>
-        );
-}
+    const filteredMovies = movies.filter(movie =>
+        movie.title.toLowerCase().includes(search.toLowerCase())
+    );
 
+    return (
+        <>
+            <Header/>
+            <br />
+            <br />
+            <div>
+                <h1>Wszystkie filmy dostępne w sieci naszych kin!</h1>
+                <input
+                    type="text"
+                    placeholder="Wyszukaj film po nazwie"
+                    value={search}
+                    onChange={e => setSearch(e.target.value)}
+                />
+                <div className="movies-list">
+                    {filteredMovies && filteredMovies.length > 0 ? (
+                        filteredMovies.map(movie => (
+                            <MovieCard key={movie.movie_id} movie={movie}/>
+                        ))
+                    ) : (
+                        <p>Brak filmów o podanej nazwie :(</p>
+                    )}
+                </div>
+            </div>
+        </>
+    );
+}
 export default HomeSite;
