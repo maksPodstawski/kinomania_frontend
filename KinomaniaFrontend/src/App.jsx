@@ -9,6 +9,7 @@ import PanelSite from "./sites/PanelSite.jsx";
 import Cinemas from "./components/Cinemas.jsx";
 import SeatReservationPanel from "./components/SeatReservationPanel.jsx";
 import ScreeningForCinema from "./components/ScreeningForCinema.jsx";
+import RemoveMoviePage from "./sites/RemoveMoviePage.jsx";
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/cinemas" element={<Cinemas />}/>
                 <Route path="/getScreening/:city" element={<ScreeningForCinema />} />
                 <Route path="/reservation" element={<SeatReservationPanel />}/>
+                <Route path="/removemovie" element={<RemoveMoviePage />}/>
             </Routes>
         </Router>
 

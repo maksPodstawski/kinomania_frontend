@@ -10,6 +10,10 @@ const PanelSite = () => {
         navigate('/addmovie');
     }
 
+    const handleRemoveMovie = () => {
+        navigate('/removemovie');
+    }
+
     const handleWrongUser = ()=>{
         navigate('/');
     }
@@ -21,10 +25,13 @@ const PanelSite = () => {
                 <div className="panel-site">
                     <button onClick={handleAddMovie}>Dodaj Film</button>
                 </div>
+                <br/>
+                <div className="panel-site">
+                    <button onClick={handleRemoveMovie}>Usuń Film</button>
+                </div>
             </>
         );
-    }
-    else{
+    } else {
         handleWrongUser();
     }
 }

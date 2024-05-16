@@ -34,17 +34,24 @@ const Cinemas = ({ cinema }) => {
     return (
         <>
             <Header/>
+            <br/>
+            <br/>
             <div>
+                <h1>Sprawdź czy mamy kino w twojej lokalizacji!</h1>
+                <br/>
                 <input
                     type="text"
-                    placeholder="Wyszukaj kino"
+                    placeholder="Wyszukaj kino po mieście"
                     value={search}
                     onChange={handleSearchChange}
                 />
-                {filteredCinemas.map(cinema => (
-                    // <p>{cinema.city}</p>
-                    <CinemasCard key={cinema.cinema_id} cinema={cinema}/>
-                ))}
+                <div className="cinemas-container">
+                    {filteredCinemas.map(cinema => (
+                        <div className="cinema-card">
+                            <CinemasCard key={cinema.cinema_id} cinema={cinema}/>
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     );
