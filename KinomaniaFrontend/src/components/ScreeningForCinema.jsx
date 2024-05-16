@@ -4,11 +4,11 @@ import Header from "./Header.jsx";
 import { useParams } from 'react-router-dom';
 import MovieCard from "./MovieCard.jsx";
 import SendScreeningsRequest from "../service/SendScreeningsRequest.js";
+import ScreeningCard from "./ScreeningCard.jsx";
 
 const ScreeningForCinema = ({ cinema }) => {
+
     const { city } = useParams();
-
-
 
     const [screenings, setScreenings] = useState([]);
     useEffect(() => {
@@ -35,7 +35,7 @@ const ScreeningForCinema = ({ cinema }) => {
                     <h1>Screenings dla miasta: {city}</h1>
                     {screenings && screenings.length > 0 ? (
                         screenings.map(screening => (
-                            <MovieCard key={screening.screening_id} screening={screening}/>
+                            <ScreeningCard key={screening.screening_id} screening={screening}/>
                         ))
                     ) : (
                         <p>Ładowanie...</p>
