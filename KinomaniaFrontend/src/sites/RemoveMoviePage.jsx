@@ -32,8 +32,6 @@ function RemoveMoviePage() {
 
         const headers = {
             Authorization: `Bearer ${token}`,
-
-
         }
 
         axios.delete(url, {headers: headers})
