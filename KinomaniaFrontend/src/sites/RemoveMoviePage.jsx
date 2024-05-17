@@ -17,8 +17,6 @@ function RemoveMoviePage() {
         }
     };
     useEffect(() => {
-
-
         fetchMovies();
     }, []);
 
@@ -29,8 +27,6 @@ function RemoveMoviePage() {
 
     const handleSubmit = async () => {
         const url = `http://localhost:8080/api/v1/panel/removeMovie/${selectedMovie}`;
-
-        console.log(selectedMovie);
 
         const token = localStorage.getItem('token');
 
@@ -54,7 +50,7 @@ function RemoveMoviePage() {
     return(
         <>
         <div className="remove-movie-container">
-            <h2>Usuń Film</h2>
+            <h1>Usuń Film</h1>
             <div className="movie-container">
                 <select onChange={handleMovieChange}>
                     {movies.map(movie => (

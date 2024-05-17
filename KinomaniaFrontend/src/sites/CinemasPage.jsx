@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/cinemasStyles.css'
 import SendCinemasRequest from "../service/SendCinemasRequest.js";
-import Header from "./Header.jsx";
-import MovieCard from "./MovieCard.jsx";
-import CinemasCard from "./CinemasCard.jsx";
+import Header from "../components/Header.jsx";
+import CinemasCard from "../components/CinemasCard.jsx";
 
-//todo - przenieść plik do sites (components -> sites)
 
-const Cinemas = ({ cinema }) => {
+
+const CinemasPage = ({}) => {
     const [cinemas, setCinemas] = useState([]);
     const [search, setSearch] = useState('');
 
@@ -56,7 +55,7 @@ const Cinemas = ({ cinema }) => {
                             </div>
                         ))
                     ) : (
-                        <p>Niestety nie mamy jeszcze w {search} kina, ale to tylko kwestia czasu!</p>
+                        <p>Brak kin w podanej miejscowości "{search}" - sprawdź pisownie</p>
                     )}
                 </div>
             </div>
@@ -64,4 +63,4 @@ const Cinemas = ({ cinema }) => {
     );
 }
 
-export default Cinemas;
+export default CinemasPage;

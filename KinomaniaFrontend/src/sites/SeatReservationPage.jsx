@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import '../styles/SeatReservationPanel.css';
 import SendSeatsRequest from "../service/SendSeatsRequest.js";
 import {useParams} from "react-router-dom";
@@ -18,7 +18,7 @@ const Seat = ({ id, row, number, selected, onSelect }) => {
     );
 };
 
-const SeatReservationPanel = () => {
+const SeatReservationPage = () => {
     const [selectedSeats, setSelectedSeats] = useState([]);
     const [numRows] = useState(5);
 
@@ -142,4 +142,4 @@ const SeatReservationPanel = () => {
     );
 };
 
-export default SeatReservationPanel;
+export default SeatReservationPage;

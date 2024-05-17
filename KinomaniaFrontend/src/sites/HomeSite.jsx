@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from "react-router-dom";
 import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import MovieCard from "../components/MovieCard.jsx";
 import Header from "../components/Header.jsx";
