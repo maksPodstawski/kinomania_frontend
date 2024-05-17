@@ -6,9 +6,7 @@ import SendScreeningByIdRequest from "../service/SendScreeningByIdRequest.js";
 import SendSeatReservationRequest from "../service/SendSeatReservationRequest.jsx";
 
 
-
-
-const Seat = ({ id, row, number, selected, onSelect }) => {
+const Seat = ({id, row, number, selected, onSelect}) => {
     return (
         <button
             className={`seat ${selected ? 'selected' : ''}`}
@@ -39,11 +37,13 @@ const SeatReservationPage = () => {
                 console.log(seatsData);
                 setSeats(seatsData);
                 let a = seatsData;
-                let b = a[seatsData.length-1].seat_row;
+                let b = a[seatsData.length - 1].seat_row;
                 let c = seatsData;
-                let d = c[seatsData.length-1].seat_column;
+                let d = c[seatsData.length - 1].seat_column;
                 setNumSeatsPerRow(b);
                 setNumSeatsPerColumn(d);
+
+                console.log("PER ROW: " + numSeatsPerRow + "  PER COLUMN: " + numSeatsPerColumn);
 
             } catch (error) {
                 console.error("Error fetching movies:", error);
@@ -56,12 +56,16 @@ const SeatReservationPage = () => {
                 console.log(screeningData.room.room_id);
                 let id = screeningData.room.room_id;
                 setScreening(screeningData);
-                if (seats != null){fetchSeats(id);}
+                if (seats != null) {
+                    fetchSeats(id);
+                }
             } catch (error) {
                 console.error("Error fetching movies:", error);
             }
         };
-        if (screening != null){fetchScreening();}
+        if (screening != null) {
+            fetchScreening();
+        }
 
 
         console.log("ASD");
@@ -70,15 +74,18 @@ const SeatReservationPage = () => {
 
 
     const seatsLayout = [];
-   // const numSeatsPerRow = 10;
 
     for (let row = 1; row <= numSeatsPerRow; row++) {
         for (let seatNumber = 1; seatNumber <= numSeatsPerColumn; seatNumber++) {
-            const seatId = (row - 1) * numSeatsPerRow + seatNumber + seats[0].seat_id;
-            seatsLayout.push({ id: seatId, row: String.fromCharCode(64 + row), number: seatNumber });
+            const seatId = (row - 1) * numSeatsPerRow + seatNumber;
+            seatsLayout.push({
+                id: seatId + seats[0].seat_id - 1,
+                row: String.fromCharCode(64 + row),
+                number: seatNumber
+            });
         }
     }
-    //todo naprawić wyświetlanie numerków
+
     const toggleSeatSelection = (seatId) => {
         if (selectedSeats.includes(seatId)) {
             setSelectedSeats(selectedSeats.filter(seat => seat !== seatId));
@@ -93,16 +100,15 @@ const SeatReservationPage = () => {
         for (let row = 1; row <= numSeatsPerRow; row++) {
             let seatsInRow = [];
             for (let seatNumber = 1; seatNumber <= numSeatsPerColumn; seatNumber++) {
-                const seatId = (row - 1) * numSeatsPerRow + seatNumber + seats[0].seat_id;
-                const seatData = seatsLayout.find(seat => seat.id === seatId);
-                if (seatData) {
+                const seat = seats.find(seat => seat.seat_row === row && seat.seat_column === seatNumber);
+                if (seat) {
                     seatsInRow.push(
                         <Seat
-                            key={seatId}
-                            id={seatData.id}
-                            row={seatData.row}
-                            number={seatData.number}
-                            selected={selectedSeats.includes(seatData.id)}
+                            key={seat.seat_id}
+                            id={seat.seat_id}
+                            row={String.fromCharCode(64 + row)}
+                            number={seatNumber}
+                            selected={selectedSeats.includes(seat.seat_id)}
                             onSelect={toggleSeatSelection}
                         />
                     );
@@ -119,21 +125,23 @@ const SeatReservationPage = () => {
         return rows;
     };
 
-
     const handleSubmit = async () => {
-            SendSeatReservationRequest(screening.screening_id,selectedSeats);
-            console.log(selectedSeats);  //todo lepiej przesyłać zaznaczone siedzonka bo nie moża zarezerwować więcej niż 1
-            alert("Zarezerwowano miejsca!");
-        }
+        await SendSeatReservationRequest(screening.screening_id, selectedSeats);
+        console.log(selectedSeats);
+        alert("Zarezerwowano miejsca!");
+    }
 
     return (
         <div className="seat-selection-panel">
             <h2>Wybierz miejsce w kinie</h2>
             <div className="seats-container">{renderSeats()}</div>
-            <p>Wybrane miejsca: {selectedSeats.map(seatId => `(${seatsLayout.find(seat => seat.id === seatId).row}${seatsLayout.find(seat => seat.id === seatId).number})`).join(', ')}</p>
+            <p>Wybrane miejsca: {selectedSeats.map(seatId => {
+                const seat = seats.find(seat => seat.seat_id === seatId);
+                return seat ? `(${String.fromCharCode(64 + seat.seat_row)}${seat.seat_column})` : '';
+            }).join(', ')}</p>
             <button onClick={handleSubmit}>Zarezerwuj miejsca!</button>
         </div>
     );
-    };
+};
 
-    export default SeatReservationPage;
+export default SeatReservationPage;
