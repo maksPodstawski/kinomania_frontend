@@ -25,6 +25,10 @@ const PanelSite = () => {
     const handleRemoveCinema = () => {
         navigate('/removecinema');
     }
+
+    const handleAddRoomToCinema = () => {
+        navigate('/addroomtocinema');
+    }
     if (localStorage.getItem('authorities') === "ROLE_ADMIN") {
         return (
             <>
@@ -43,6 +47,10 @@ const PanelSite = () => {
                 <br/>
                 <div className="panel-site">
                     <button onClick={handleRemoveCinema}>Usuń Kino</button>
+                </div>
+                <br/>
+                <div className="panel-site">
+                    <button onClick={handleAddRoomToCinema}>Dodaj salę</button>
                 </div>
             </>
         );
