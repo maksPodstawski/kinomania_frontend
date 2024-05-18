@@ -132,7 +132,7 @@ const SeatReservationPage = () => {
                     tabReservedSeats.push(reservatedSeats[i].seat_id);
                 }
 
-                console.log(tabReservedSeats[0].seat_id);
+                //console.log(tabReservedSeats[0].seat_id);
 
                 if (tabReservedSeats.includes(seat.seat_id)) {
                     if (seat) {
