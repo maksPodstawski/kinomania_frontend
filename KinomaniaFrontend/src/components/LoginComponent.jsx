@@ -3,6 +3,7 @@ import SendLoginRequest from '../service/SendLoginRequest.jsx';
 import '../styles/loggingPageStyles.css';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import LogRegHeader from "./LogRegHeader.jsx";
 
 function LoginComponent() {
     const [login, setLogin] = useState('');
@@ -42,6 +43,8 @@ function LoginComponent() {
     };
 
     return (
+        <>
+            <LogRegHeader />
         <div className="login-form">
             <h2>Login:</h2>
             <input
@@ -65,13 +68,12 @@ function LoginComponent() {
         {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
             </span>
             </div>
-            <br />
             <button onClick={handleSubmit} type="submit">
                 Zaloguj się
             </button>
             {token && <p>Token: {token}</p>}
         </div>
-    );
+        </>);
 }
 
 export default LoginComponent;

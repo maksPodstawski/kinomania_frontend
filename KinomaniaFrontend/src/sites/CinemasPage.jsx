@@ -55,7 +55,7 @@ const CinemasPage = ({}) => {
                             </div>
                         ))
                     ) : (
-                        <p>Brak kin w podanej miejscowości "{search}" - sprawdź pisownie</p>
+                        <p>Brak kin w podanej miejscowości - sprawdź pisownie!</p>
                     )}
                 </div>
             </div>

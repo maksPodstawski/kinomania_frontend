@@ -7,8 +7,8 @@ body{
 .register-form {
     width: 300px;
     padding: 30px;
-    background-color: #ba2b2b;
-    box-shadow: 0px 0px 10px 0px #00000033;
+    background-color: #FF3F3F;
+    box-shadow: 0 0 10px 0 #2c2c2c;
     border-radius: 10px;
     display: flex;
     justify-content: center;
