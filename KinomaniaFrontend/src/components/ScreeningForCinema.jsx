@@ -11,28 +11,26 @@ const ScreeningForCinema = ({ cinema }) => {
     const { city } = useParams();
 
     const [screenings, setScreenings] = useState([]);
-    useEffect(() => {
-        const fetchScreenings = async () => {
-            try {
-                const screeeningsData = await SendScreeningsRequest(city);
-                console.log(screeeningsData);
-                setScreenings(screeeningsData);
-            } catch (error) {
-                console.error("Error fetching screeenings:", error);
-            }
-        };
-
-        fetchScreenings();
-
-    }, [city]);
-
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [filteredScreenings, setFilteredScreenings] = useState([]);
     const [renderedMoviesMap, setRenderedMoviesMap] = useState(new Map());
 
+    useEffect(() => {
+        const fetchScreenings = async () => {
+            try {
+                const screeningsData = await SendScreeningsRequest(city);
+                setScreenings(screeningsData);
+            } catch (error) {
+                console.error("Error fetching screenings:", error);
+            }
+        };
+
+        fetchScreenings();
+    }, [city]);
+
     const handleDateChange = (date) => {
         setSelectedDate(date);
-        if (selectedDate) {
+        if (screenings.length > 0) {
             const filtered = screenings.filter(screening => {
                 const screeningDate = new Date(screening.date);
                 return (
@@ -42,10 +40,12 @@ const ScreeningForCinema = ({ cinema }) => {
                 );
             });
             setFilteredScreenings(filtered);
-        } else {
-            setFilteredScreenings([]);
         }
     };
+
+    useEffect(() => {
+        handleDateChange(selectedDate);
+    }, [selectedDate, screenings]);
 
     useEffect(() => {
         const map = new Map();
@@ -65,15 +65,7 @@ const ScreeningForCinema = ({ cinema }) => {
             }
         });
         setRenderedMoviesMap(map);
-
-
     }, [filteredScreenings]);
-
-    useEffect(() => {
-        if (screenings != null) {
-            handleDateChange(selectedDate);
-        }
-    }, [selectedDate, screenings]);
 
     return (
         <>
@@ -99,7 +91,7 @@ const ScreeningForCinema = ({ cinema }) => {
                 <div>
                     <h1>Screenings dla miasta: {city}</h1>
                     <div className="screenings-container">
-                        {filteredScreenings && filteredScreenings.length > 0 ? (
+                        {filteredScreenings.length > 0 ? (
                             Array.from(renderedMoviesMap.values()).map((item, index) => (
                                 <div key={index} className="screening-item">
                                     <ScreeningCard
