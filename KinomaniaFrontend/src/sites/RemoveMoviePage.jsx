@@ -34,7 +34,7 @@ function RemoveMoviePage() {
             Authorization: `Bearer ${token}`,
         }
 
-        axios.delete(url, {headers: headers})
+        axios.put(url, {}, { headers: headers })
             .then(response => {
                 console.log('Film usunięty:', response.data);
                 fetchMovies();
