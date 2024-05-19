@@ -103,7 +103,7 @@ function AddScreeningPage() {
             </label>
             <br />
             <label>
-                Data premiery:
+                Data występowania:
                 <input type="date" value={date} onChange={handleDateChange} />
             </label>
             <br />
