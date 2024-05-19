@@ -26,6 +26,10 @@ const PanelSite = () => {
         navigate('/removecinema');
     }
 
+    const handleAddScreening = () => {
+        navigate('/addscreening');
+    }
+
     const handleAddRoomToCinema = () => {
         navigate('/addroomtocinema');
     }
@@ -51,6 +55,10 @@ const PanelSite = () => {
                 <br/>
                 <div className="panel-site">
                     <button onClick={handleAddRoomToCinema}>Dodaj salę</button>
+                </div>
+                <br/>
+                <div className="panel-site">
+                    <button onClick={handleAddScreening}>Dodaj seans</button>
                 </div>
             </>
         );
