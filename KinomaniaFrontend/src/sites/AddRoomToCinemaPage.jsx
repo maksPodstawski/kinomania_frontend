@@ -1,14 +1,13 @@
-// sites/AddRoomToCinemaPage.jsx
-
 import React, { useState, useEffect } from 'react';
 import SendCinemasRequest from '../service/SendCinemasRequest';
-import SendAddRoomRequest from '../service/SendAddRoomRequest';
+import SendAddRoomWithSeatsRequest from '../service/SendAddRoomWithSeatsRequest';
 
 function AddRoomToCinemaPage() {
     const [cinemas, setCinemas] = useState([]);
     const [selectedCinema, setSelectedCinema] = useState("");
     const [roomNumber, setRoomNumber] = useState("");
-    const [numberOfSeats, setNumberOfSeats] = useState("");
+    const [rows, setRows] = useState("");
+    const [columns, setColumns] = useState("");
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -32,35 +31,40 @@ function AddRoomToCinemaPage() {
         setRoomNumber(event.target.value);
     };
 
-    const handleNumberOfSeatsChange = (event) => {
-        setNumberOfSeats(event.target.value);
+    const handleRowsChange = (event) => {
+        setRows(event.target.value);
+    };
+
+    const handleColumnsChange = (event) => {
+        setColumns(event.target.value);
     };
 
     const handleSubmit = async () => {
-        if (!selectedCinema || !roomNumber || !numberOfSeats) {
+        if (!selectedCinema || !roomNumber || !rows || !columns) {
             setError("Wszystkie pola są wymagane.");
             return;
         }
 
-        const roomDto = {
+        const seatsAndRoomDTO = {
             cinemaId: selectedCinema,
             roomNumber: roomNumber,
-            numberOfSeats: numberOfSeats
+            rows: rows,
+            columns: columns
         };
 
         try {
-            await SendAddRoomRequest(roomDto);
+            await SendAddRoomWithSeatsRequest(seatsAndRoomDTO);
             setError(null);
-            alert("Pokój dodany");
+            alert("Udało się dodać salę");
         } catch (error) {
-            console.error("Błąd w dodawaniu pokoju:", error);
-            setError("Nie udało się dodać pokoju. Spróbuj ponownie.");
+            console.error("Błąd dodawania sali:", error);
+            setError("Nie udało się dodać sali.");
         }
     };
 
     return (
         <div className="add-room-to-cinema-form">
-            <h1>Dodaj salę kinową</h1>
+            <h1>Dodawanie sali kinowej</h1>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <select onChange={handleCinemaChange} value={selectedCinema}>
                 <option value="">Wybierz kino</option>
@@ -75,24 +79,34 @@ function AddRoomToCinemaPage() {
                 id="roomNumber"
                 name="roomNumber"
                 type="number"
-                placeholder="Numer sali"
+                placeholder="Numer pokoju"
                 required
                 value={roomNumber}
                 onChange={handleRoomNumberChange}
             />
             <br />
             <input
-                id="numberOfSeats"
-                name="numberOfSeats"
+                id="rows"
+                name="rows"
                 type="number"
-                placeholder="Ilość miejsc siedziących"
+                placeholder="Ilość wierszy"
                 required
-                value={numberOfSeats}
-                onChange={handleNumberOfSeatsChange}
+                value={rows}
+                onChange={handleRowsChange}
+            />
+            <br />
+            <input
+                id="columns"
+                name="columns"
+                type="number"
+                placeholder="Ilość kolumn"
+                required
+                value={columns}
+                onChange={handleColumnsChange}
             />
             <br />
             <button onClick={handleSubmit} type="submit">
-                Dodaj salę
+                Dodawanie sali kinowej
             </button>
         </div>
     );

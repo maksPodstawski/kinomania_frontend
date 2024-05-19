@@ -50,7 +50,7 @@ function RemoveCinemaPage() {
                 <div className="cinema-container">
                     <select onChange={handleCinemaChange}>
                         {cinemas.map(cinema => (
-                            <option key={cinema.cinema_id} value={cinema.cinema_id}>{cinema.city}</option>
+                            <option key={cinema.cinema_id} value={cinema.cinema_id}>{cinema.city} - {cinema.address}</option>
                         ))}
                     </select>
                     <br />
