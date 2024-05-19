@@ -13,6 +13,7 @@ import RemoveMoviePage from "./sites/RemoveMoviePage.jsx";
 import AddCinemaPage from "./sites/AddCinemaPage.jsx";
 import AddRoomToCinemaPage from "./sites/AddRoomToCinemaPage.jsx";
 import RemoveCinemaPage from "./sites/RemoveCinemaPage.jsx";
+import AddScreeningPage from "./sites/AddScreeningPage.jsx";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
                 <Route path="/removecinema" element={<RemoveCinemaPage />} />
                 <Route path="/addcinema" element={<AddCinemaPage />} />
                 <Route path="/addroomtocinema" element={<AddRoomToCinemaPage />} />
+                <Route path="/addscreening" element={<AddScreeningPage />} />
             </Routes>
         </Router>
 
