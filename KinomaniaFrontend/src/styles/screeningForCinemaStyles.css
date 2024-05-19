@@ -1,0 +1,16 @@
+.screenings-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.screening-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.already-rendered {
+    margin-left: 10px;
+    color: red; /* Możesz dostosować kolor do swoich potrzeb */
+    font-style: italic;
+}

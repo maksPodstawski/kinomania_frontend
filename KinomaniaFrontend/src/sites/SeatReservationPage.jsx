@@ -173,10 +173,13 @@ const SeatReservationPage = () => {
 
         return rows;
     };
-
+    const refreshPage = () => {
+        window.location.reload();
+    };
     const handleSubmit = async () => {
         await SendSeatReservationRequest(screening.screening_id, selectedSeats);
         alert("Zarezerwowano miejsca!");
+        refreshPage();
     }
 
     return (

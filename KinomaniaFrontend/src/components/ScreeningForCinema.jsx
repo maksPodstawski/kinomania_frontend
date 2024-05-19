@@ -25,25 +25,45 @@ const ScreeningForCinema = ({ cinema }) => {
         fetchScreenings();
     }, [city]);
 
-
-
+    let renderedMoviesTab = [];
+    const renderedMoviesMap = new Map();
+    const renderedMovies = new Set();
     return (
         <>
-            <Header/>
+            <Header />
             <div>
                 <div>
                     <h1>Screenings dla miasta: {city}</h1>
-                    {screenings && screenings.length > 0 ? (
-                        screenings.map(screening => (
-                            <ScreeningCard key={screening.screening_id} screening={screening}/>
-                        ))
-                    ) : (
-                        <p>Ładowanie...</p>
-                    )}
+                    <div className="screenings-container">
+                        {screenings && screenings.length > 0 ? (
+                            screenings.forEach(screening => {
+                                const movieId = screening.movie.movie_id;
+                                if (renderedMoviesMap.has(movieId)) {
+                                    const existing = renderedMoviesMap.get(movieId);
+                                    existing.additionalDates.push({
+                                        screening_id: screening.screening_id,
+                                        date: screening.date
+                                    });
+                                } else {
+                                    renderedMoviesMap.set(movieId, {
+                                        screening: screening,
+                                        additionalDates: []
+                                    });
+                                }
+                            }),
+                                Array.from(renderedMoviesMap.values()).map((item, index) => (
+                                    <div key={index} className="screening-item">
+                                        <ScreeningCard screening={item.screening} additionalDates={item.additionalDates} />
+                                    </div>
+                                ))
+                        ) : (
+                            <p>Ładowanie...</p>
+                        )}
+                    </div>
                 </div>
             </div>
         </>
     );
-}
+};
 
 export default ScreeningForCinema;
