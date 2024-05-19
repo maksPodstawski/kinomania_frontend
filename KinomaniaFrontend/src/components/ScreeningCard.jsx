@@ -28,6 +28,7 @@ const ScreeningCard = ({ screening, additionalDates }) => {
         navigate(`/reservation/${screening_id}`);
     };
 
+
     return (
         <div className="movie-card">
             <div className="movie-info">
@@ -38,13 +39,13 @@ const ScreeningCard = ({ screening, additionalDates }) => {
                 )}
             </div>
             <div className="screening-dates">
-                <button onClick={() => goToReservation(screening.screening_id)}>{screening.date}</button>
+                <button onClick={() => goToReservation(screening.screening_id)}>{new Date(screening.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</button>
                 {additionalDates && additionalDates.map((date, index) => (
-                    <button key={index} onClick={() => goToReservation(date.screening_id)}>{date.date}</button>
+                    <button key={index} onClick={() => goToReservation(date.screening_id)}> {new Date(date.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</button>
                 ))}
             </div>
         </div>
     );
 };
-
+// new Date(date.date).toISOString().split('T')[0]
 export default ScreeningCard;
