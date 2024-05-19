@@ -4,6 +4,7 @@ import axios from 'axios';
 function AddScreeningPage() {
     const [movies, setMovies] = useState([]);
     const [cinemas, setCinemas] = useState([]);
+    const [rooms, setRooms] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState('');
     const [selectedCinema, setSelectedCinema] = useState('');
     const [selectedRoom, setSelectedRoom] = useState('');
@@ -24,6 +25,23 @@ function AddScreeningPage() {
         };
         fetchMoviesAndCinemas();
     }, []);
+
+    useEffect(() => {
+        const fetchRooms = async () => {
+            if (selectedCinema) {
+                try {
+                    const roomsResponse = await axios.get(`http://localhost:8080/api/v1/getRooms/${selectedCinema}`);
+                    setRooms(roomsResponse.data);
+                    setSelectedRoom('');  // Reset selected room when cinema changes
+                } catch (error) {
+                    console.error('Error fetching rooms:', error);
+                }
+            } else {
+                setRooms([]);
+            }
+        };
+        fetchRooms();
+    }, [selectedCinema]);
 
     const handleMovieChange = (event) => {
         setSelectedMovie(event.target.value);
@@ -99,16 +117,21 @@ function AddScreeningPage() {
             <br />
             <label>
                 Sala kinowa:
-                <input type="text" value={selectedRoom} onChange={handleRoomChange} placeholder="Podaj ID sali" />
+                <select value={selectedRoom} onChange={handleRoomChange}>
+                    <option value="">Wybierz salę</option>
+                    {rooms.map(room => (
+                        <option key={room.room_id} value={room.room_id}>{room.room_number}</option>
+                    ))}
+                </select>
             </label>
             <br />
             <label>
-                Data występowania:
+                Data seansu:
                 <input type="date" value={date} onChange={handleDateChange} />
             </label>
             <br />
             <label>
-                Czas trwania:
+                Czas seansu:
                 <input type="time" value={time} onChange={handleTimeChange} />
             </label>
             <br />
