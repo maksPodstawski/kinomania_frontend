@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format } from 'date-fns';
 
 function AddScreeningPage() {
     const [movies, setMovies] = useState([]);
@@ -8,8 +11,7 @@ function AddScreeningPage() {
     const [selectedMovie, setSelectedMovie] = useState('');
     const [selectedCinema, setSelectedCinema] = useState('');
     const [selectedRoom, setSelectedRoom] = useState('');
-    const [date, setDate] = useState('');
-    const [time, setTime] = useState('');
+    const [datetime, setDatetime] = useState(new Date());
     const [price, setPrice] = useState('');
 
     useEffect(() => {
@@ -55,14 +57,6 @@ function AddScreeningPage() {
         setSelectedRoom(event.target.value);
     };
 
-    const handleDateChange = (event) => {
-        setDate(event.target.value);
-    };
-
-    const handleTimeChange = (event) => {
-        setTime(event.target.value);
-    };
-
     const handlePriceChange = (event) => {
         setPrice(event.target.value);
     };
@@ -73,12 +67,14 @@ function AddScreeningPage() {
             Authorization: `Bearer ${token}`,
         };
 
+        // Correctly format the datetime value
+        const formattedDatetime = format(datetime, 'yyyy-MM-dd HH:mm:ss.SSSSSS');
+
         const screeningData = {
             cinemaId: selectedCinema,
             movieId: selectedMovie,
             roomId: selectedRoom,
-            screeningDate: date,
-            screeningTime: time,
+            screeningDate: formattedDatetime,  // Formatted datetime
             price: parseFloat(price),
         };
 
@@ -126,13 +122,15 @@ function AddScreeningPage() {
             </label>
             <br />
             <label>
-                Data seansu:
-                <input type="date" value={date} onChange={handleDateChange} />
-            </label>
-            <br />
-            <label>
-                Czas seansu:
-                <input type="time" value={time} onChange={handleTimeChange} />
+                Data i czas seansu:
+                <DatePicker
+                    selected={datetime}
+                    onChange={(date) => setDatetime(date)}
+                    showTimeSelect
+                    dateFormat="yyyy-MM-dd HH:mm"
+                    timeFormat="HH:mm"
+                    timeIntervals={15}
+                />
             </label>
             <br />
             <label>
