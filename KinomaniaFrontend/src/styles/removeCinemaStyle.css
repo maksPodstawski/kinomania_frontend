@@ -1,0 +1,9 @@
+.remove-cinema-container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

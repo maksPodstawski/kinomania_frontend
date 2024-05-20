@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SendMoviesRequest from "../service/SendMoviesRequest.js";
+import Header from "../components/Header.jsx";
+import '../styles/removeMovieStyle.css';
+import {BrowserRouter} from "react-router-dom";
 
 function RemoveMoviePage() {
 
@@ -47,6 +50,7 @@ function RemoveMoviePage() {
 
     return(
         <>
+            <Header/>
         <div className="remove-movie-container">
             <h1>Usuń Film</h1>
             <div className="movie-container">
@@ -55,6 +59,7 @@ function RemoveMoviePage() {
                         <option key={movie.movie_id} value={movie.movie_id}>{movie.title}</option>
                     ))}
                 </select>
+                <br />
                 <br />
                 <button type="submit" onClick={handleSubmit}>Usuń</button>
             </div>

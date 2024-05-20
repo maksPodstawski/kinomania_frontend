@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import SendCinemasRequest from '../service/SendCinemasRequest';
 import SendAddRoomWithSeatsRequest from '../service/SendAddRoomWithSeatsRequest';
+import Header from "../components/Header.jsx";
+import '../styles/addRoomToCinemaStyle.css';
 
 function AddRoomToCinemaPage() {
+    const refreshPage = () => {
+        window.location.reload();
+    };
     const [cinemas, setCinemas] = useState([]);
     const [selectedCinema, setSelectedCinema] = useState("");
     const [roomNumber, setRoomNumber] = useState("");
@@ -56,6 +61,7 @@ function AddRoomToCinemaPage() {
             await SendAddRoomWithSeatsRequest(seatsAndRoomDTO);
             setError(null);
             alert("Udało się dodać salę");
+            refreshPage();
         } catch (error) {
             console.error("Błąd dodawania sali:", error);
             setError("Nie udało się dodać sali.");
@@ -63,6 +69,8 @@ function AddRoomToCinemaPage() {
     };
 
     return (
+        <>
+            <Header/>
         <div className="add-room-to-cinema-form">
             <h1>Dodawanie sali kinowej</h1>
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -109,7 +117,7 @@ function AddRoomToCinemaPage() {
                 Dodawanie sali kinowej
             </button>
         </div>
-    );
+        </>);
 }
 
 export default AddRoomToCinemaPage;

@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/SeatReservationPanel.css';
 import SendSeatsRequest from "../service/SendSeatsRequest.js";
-import {redirect, useParams, useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import SendScreeningByIdRequest from "../service/SendScreeningByIdRequest.js";
 import SendSeatReservationRequest from "../service/SendSeatReservationRequest.jsx";
 import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import SendReservatedSeatsRequest from "../service/SendReservatedSeatsRequest.js";
 import PaymentPage from "./PaymentPage.jsx";
-
-
+import Header from "../components/Header.jsx";
 
 const Seat = ({ id, row, number, selected, onSelect, disabled }) => {
     return (
@@ -167,7 +166,6 @@ const SeatReservationPage = () => {
     const refreshPage = () => {
         window.location.reload();
     };
-
     const navigate = useNavigate();
 
 
@@ -178,12 +176,11 @@ const SeatReservationPage = () => {
                 seats: selectedSeats
             }
         });
-        //await SendSeatReservationRequest(screening.screening_id, selectedSeats);
-        //alert("Zarezerwowano miejsca!");
-        //refreshPage();
-    }
+        }
 
     return (
+        <>
+            <Header/>
         <div className="seat-selection-panel">
             <h2>Wybierz miejsce w kinie</h2>
             <div className="seats-container">{renderSeats()}</div>
@@ -193,7 +190,8 @@ const SeatReservationPage = () => {
             }).join(', ')}</p>
             <button onClick={handleSubmit}>Zarezerwuj miejsca!</button>
         </div>
-    );
+        </>);
 };
+
 
 export default SeatReservationPage;

@@ -3,6 +3,8 @@ import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format } from 'date-fns';
+import Header from "../components/Header.jsx";
+import '../styles/addScreeningStyle.css';
 
 function AddScreeningPage() {
     const [movies, setMovies] = useState([]);
@@ -67,7 +69,6 @@ function AddScreeningPage() {
             Authorization: `Bearer ${token}`,
         };
 
-        // Correctly format the datetime value
         const formattedDatetime = format(datetime, 'yyyy-MM-dd HH:mm:ss.SSSSSS');
 
         const screeningData = {
@@ -89,11 +90,12 @@ function AddScreeningPage() {
     };
 
     return (
+        <>
+            <Header />
         <div className="add-screening-form">
             <h1>Dodaj nowy seans</h1>
             <label>
-                Film:
-                <select value={selectedMovie} onChange={handleMovieChange}>
+                <select value={selectedMovie} onChange={handleMovieChange} id="add-screening-input">
                     <option value="">Wybierz film</option>
                     {movies.map(movie => (
                         <option key={movie.movie_id} value={movie.movie_id}>{movie.title}</option>
@@ -102,8 +104,7 @@ function AddScreeningPage() {
             </label>
             <br />
             <label>
-                Kino:
-                <select value={selectedCinema} onChange={handleCinemaChange}>
+                <select value={selectedCinema} onChange={handleCinemaChange} id="add-screening-input">
                     <option value="">Wybierz kino</option>
                     {cinemas.map(cinema => (
                         <option key={cinema.cinema_id} value={cinema.cinema_id}>{cinema.city} - {cinema.address}</option>
@@ -112,8 +113,7 @@ function AddScreeningPage() {
             </label>
             <br />
             <label>
-                Sala kinowa:
-                <select value={selectedRoom} onChange={handleRoomChange}>
+                <select value={selectedRoom} onChange={handleRoomChange} id="add-screening-input">
                     <option value="">Wybierz salę</option>
                     {rooms.map(room => (
                         <option key={room.room_id} value={room.room_id}>{room.room_number}</option>
@@ -122,8 +122,8 @@ function AddScreeningPage() {
             </label>
             <br />
             <label>
-                Data i czas seansu:
                 <DatePicker
+                    id="add-screening-input"
                     selected={datetime}
                     onChange={(date) => setDatetime(date)}
                     showTimeSelect
@@ -134,13 +134,12 @@ function AddScreeningPage() {
             </label>
             <br />
             <label>
-                Cena:
-                <input type="number" step="0.01" value={price} onChange={handlePriceChange} />
+                <input id="add-screening-input" type="number" step="0.01" value={price} onChange={handlePriceChange} placeholder="Cena"/>
             </label>
             <br />
             <button onClick={handleSubmit}>Dodaj seans</button>
         </div>
-    );
+        </>);
 }
 
 export default AddScreeningPage;
