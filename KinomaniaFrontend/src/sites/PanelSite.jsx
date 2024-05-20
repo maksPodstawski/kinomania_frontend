@@ -1,5 +1,6 @@
 import Header from "../components/Header.jsx";
 import {useNavigate} from "react-router-dom";
+import '../styles/panelSiteStyle.css';
 
 
 const PanelSite = () => {
@@ -14,7 +15,7 @@ const PanelSite = () => {
         navigate('/removemovie');
     }
 
-    const handleWrongUser = ()=>{
+    const handleWrongUser = () => {
         navigate('/');
     }
 
@@ -37,28 +38,30 @@ const PanelSite = () => {
         return (
             <>
                 <Header/>
-                <div className="panel-site">
-                    <button onClick={handleAddMovie}>Dodaj Film</button>
-                </div>
-                <br/>
-                <div className="panel-site">
-                    <button onClick={handleRemoveMovie}>Usuń Film</button>
-                </div>
-                <br/>
-                <div className="panel-site">
-                    <button onClick={handleAddCinema}>Dodaj Kino</button>
-                </div>
-                <br/>
-                <div className="panel-site">
-                    <button onClick={handleRemoveCinema}>Usuń Kino</button>
-                </div>
-                <br/>
-                <div className="panel-site">
-                    <button onClick={handleAddRoomToCinema}>Dodaj salę</button>
-                </div>
-                <br/>
-                <div className="panel-site">
-                    <button onClick={handleAddScreening}>Dodaj seans</button>
+                <div className="panel-site-form">
+                    <div className="panel-site">
+                        <button onClick={handleAddMovie} className="panel-button">Dodaj Film</button>
+                    </div>
+                    <br/>
+                    <div className="panel-site">
+                        <button onClick={handleRemoveMovie} className="panel-button">Usuń Film</button>
+                    </div>
+                    <br/>
+                    <div className="panel-site">
+                        <button onClick={handleAddCinema} className="panel-button">Dodaj Kino</button>
+                    </div>
+                    <br/>
+                    <div className="panel-site">
+                        <button onClick={handleRemoveCinema} className="panel-button">Usuń Kino</button>
+                    </div>
+                    <br/>
+                    <div className="panel-site">
+                        <button onClick={handleAddRoomToCinema} className="panel-button">Dodaj salę</button>
+                    </div>
+                    <br/>
+                    <div className="panel-site">
+                        <button onClick={handleAddScreening} className="panel-button">Dodaj seans</button>
+                    </div>
                 </div>
             </>
         );

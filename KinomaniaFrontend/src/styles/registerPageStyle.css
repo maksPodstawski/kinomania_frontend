@@ -1,28 +1,106 @@
-
-
-.register-form {
-    width: 300px;
-    padding: 30px;
-    background-color: #FF3F3F;
-    box-shadow: 0 0 10px 0 #2c2c2c;
-    border-radius: 10px;
+.registerPage-form {
     display: flex;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to left, #6a11cb, #2575fc);
+    color: black;
+}
+
+.register-form {
+    width: 350px;
+    padding: 40px;
+    background: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
-.register-form input {
+
+.register-form input, .input-container-register input, .input-container-register2 input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin: 10px 0;
     border-radius: 5px;
-    border: 1px solid #cccccc;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
 }
+
+.register-form input:focus {
+    border-color: #2575fc;
+    outline: none;
+}
+
 .register-form button {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
+    margin-top: 20px;
     border-radius: 5px;
     border: none;
     color: #ffffff;
-    background-color: #007BFF;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.register-form button:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+}
+
+.register-form button:active {
+    transform: translateY(0);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+@media (max-width: 400px) {
+    .register-form {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+.input-container-register2, .input-container-register {
+    position: relative;
+    width: 100%;
+    padding-right: 32px;
+}
+
+.toggle-password-again, .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password-again i, .toggle-password i {
+    font-size: 18px; /* Adjust size of the icon */
+    color: #cccccc;
+}
+
+.toggle-password-again:hover i, .toggle-password:hover i {
+    color: #00a1e6; /* Change color on hover if needed */
 }

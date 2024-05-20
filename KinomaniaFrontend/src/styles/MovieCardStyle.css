@@ -37,9 +37,15 @@
     transition: opacity 0.2s;
 }
 
+
 .movie-card:hover .movie-info {
     opacity: 1;
 }
+
+.movie-card:hover img  {
+    opacity: 0.25;
+}
+
 
 .movie-info h2 {
     margin-top: 0;

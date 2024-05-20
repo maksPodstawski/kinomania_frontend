@@ -1,0 +1,17 @@
+.panel-site-form {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.panel-site {
+    margin: 5px;
+}
+
+.panel-button{
+    min-width: 200px;
+}

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import SendLoginRequest from '../service/SendLoginRequest.jsx';
 import '../styles/loggingPageStyles.css';
-import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
+import {jwtDecode} from 'jwt-decode';
+import {useNavigate} from 'react-router-dom';
 import LogRegHeader from "./LogRegHeader.jsx";
 
 function LoginComponent() {
@@ -44,35 +44,37 @@ function LoginComponent() {
 
     return (
         <>
-            <LogRegHeader />
-        <div className="login-form">
-            <h2>Login:</h2>
-            <input
-                id="login"
-                name="login"
-                type="text"
-                placeholder="Wprowadź login"
-                required
-                onChange={handleLoginChange}
-            />
-            <div className="input-container">
-                <input
-                    id="password"
-                    name="password"
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="Wprowadź hasło"
-                    required
-                    onChange={handlePasswordChange}
-                />
-                <span className="toggle-password" onClick={togglePasswordVisibility}>
+            <LogRegHeader/>
+            <div className="loginPage-form">
+                <div className="login-form">
+                    <h2>Login:</h2>
+                    <input
+                        id="login"
+                        name="login"
+                        type="text"
+                        placeholder="Wprowadź login"
+                        required
+                        onChange={handleLoginChange}
+                    />
+                    <div className="input-container">
+                        <input
+                            id="password"
+                            name="password"
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="Wprowadź hasło"
+                            required
+                            onChange={handlePasswordChange}
+                        />
+                        <span className="toggle-password" onClick={togglePasswordVisibility}>
         {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
             </span>
+                    </div>
+                    <button onClick={handleSubmit} type="submit">
+                        Zaloguj się
+                    </button>
+                    {token && <p>Token: {token}</p>}
+                </div>
             </div>
-            <button onClick={handleSubmit} type="submit">
-                Zaloguj się
-            </button>
-            {token && <p>Token: {token}</p>}
-        </div>
         </>);
 }
 

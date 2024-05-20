@@ -41,7 +41,7 @@ function RegisterComponent() {
         const token = await SendRegisterRequest(login, password, email);
         setToken(token);
         saveTokenToLocalStorage(token);
-        if(token !== ""){
+        if (token !== "") {
             navigate('/');
         }
     }
@@ -49,18 +49,30 @@ function RegisterComponent() {
     return (
         <>
             <LogRegHeader/>
-            <div className="register-form">
-                <h2>Rejestracja</h2>
-                <input id="login" name="login" type="text" placeholder="Wprowadź login" required onChange={handleLoginChange}/>
-                <div className="input-container">
-                    <input id="password" name="password" type={showPassword ? 'text' : 'password'} placeholder="Wprowadź hasło" required onChange={handlePasswordChange}/>
-                    <span className="toggle-password" onClick={togglePasswordVisibility}>
+            <div className="registerPage-form">
+                <div className="register-form">
+                    <h2>Rejestracja</h2>
+                    <input id="login" name="login" type="text" placeholder="Wprowadź login" required
+                           onChange={handleLoginChange}/>
+                    <div className="input-container-register">
+                        <input id="password" name="password" type={showPassword ? 'text' : 'password'}
+                               placeholder="Wprowadź hasło" required onChange={handlePasswordChange}/>
+                        <span className="toggle-password" onClick={togglePasswordVisibility}>
                     {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
-                </span>
+                            </span>
+                    </div>
+                    <div className="input-container-register2">
+                        <input id="password-again" name="password-again" type={showPassword ? 'text' : 'password'}
+                               placeholder="Wprowadź hasło ponownie" required onChange={handlePasswordChange}/>
+                        <span className="toggle-password-again" onClick={togglePasswordVisibility}>
+                    {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
+                        </span>
+                    </div>
+                    <input id="email" name="email" type="email" placeholder="Wprowadź email" required
+                           onChange={handleEmailChange}/>
+                    <button onClick={handleSubmit} type="submit">Zarejestruj się</button>
+                    {token && <p>Token: {token}</p>}
                 </div>
-                <input id="email" name="email" type="email" placeholder="Wprowadź email" required onChange={handleEmailChange}/>
-                <button onClick={handleSubmit} type="submit">Zarejestruj się</button>
-                {token && <p>Token: {token}</p>}
             </div>
         </>
     );

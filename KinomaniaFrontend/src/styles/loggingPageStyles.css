@@ -1,9 +1,17 @@
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/eye.css');
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/eye-alt.css');
+.loginPage-form{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    place-items: center;
+    align-items: center;
+    justify-content: center;
+}
 
 .login-form {
     width: 300px;
-    padding: 300px;
+    padding: 50px;
     background-color: #FF3F3F;
     box-shadow: 0 0 10px 0 #00000033;
     border-radius: 10px;
