@@ -89,7 +89,7 @@ const ScreeningForCinema = ({ cinema }) => {
                 </div>
 
                 <div>
-                    <h1>Screenings dla miasta: {city}</h1>
+                    <h1>Seanse dla miasta: {city}</h1>
                     <div className="screenings-container">
                         {filteredScreenings.length > 0 ? (
                             Array.from(renderedMoviesMap.values()).map((item, index) => (

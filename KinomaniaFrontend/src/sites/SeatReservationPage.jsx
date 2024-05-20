@@ -4,8 +4,8 @@ import SendSeatsRequest from "../service/SendSeatsRequest.js";
 import {useParams} from "react-router-dom";
 import SendScreeningByIdRequest from "../service/SendScreeningByIdRequest.js";
 import SendSeatReservationRequest from "../service/SendSeatReservationRequest.jsx";
-import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import SendReservatedSeatsRequest from "../service/SendReservatedSeatsRequest.js";
+import Header from "../components/Header.jsx";
 
 
 
@@ -155,7 +155,6 @@ const SeatReservationPage = () => {
             }
             rows.push(
                 <div key={`row-${row}`} className="seat-row">
-                    <h3>Rząd {String.fromCharCode(64 + row)}</h3>
                     <div className="seat-grid">{seatsInRow}</div>
                 </div>
             );
@@ -173,6 +172,8 @@ const SeatReservationPage = () => {
     }
 
     return (
+        <>
+            <Header/>
         <div className="seat-selection-panel">
             <h2>Wybierz miejsce w kinie</h2>
             <div className="seats-container">{renderSeats()}</div>
@@ -182,7 +183,7 @@ const SeatReservationPage = () => {
             }).join(', ')}</p>
             <button onClick={handleSubmit}>Zarezerwuj miejsca!</button>
         </div>
-    );
+        </>);
 };
 
 export default SeatReservationPage;

@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import  '../styles/addMovieStyle.css';
+import Header from "../components/Header.jsx";
 
 function AddMoviePage() {
 
@@ -66,15 +68,25 @@ function AddMoviePage() {
 
     return(
         <>
+            <Header/>
         <div className="add-movie-container">
-            <h2>Dodaj Film</h2>
+            <h1>Dodaj Film</h1>
             <div className="movie-container">
-                <input type="text" placeholder="Wprowadź nazwę filmu" required onChange={handleTitleChange}/>
-                <input type="text" placeholder="Wprowadź opis filmu" required onChange={handleDescriptionChange}/>
-                <input type="text" placeholder="Wprowadź reżysera filmu" required onChange={handleDirectorChange}/>
-                <input type="text" placeholder="Wprowadź gatunek filmu" required onChange={handleGenreChange}/>
-                <input type="number" placeholder="Wprowadź czas trwania filmu" required onChange={handleDurationChange}/>
-                <input type="text" placeholder="Wprowadź adres url do plakatu filmu" required onChange={handleImgChange}/>
+                <input type="text" id="add-movie-input" placeholder="Wprowadź nazwę filmu" required onChange={handleTitleChange}/>
+                <br/>
+                <input type="text" id="add-movie-input" placeholder="Wprowadź opis filmu" required onChange={handleDescriptionChange}/>
+                <br/>
+                <input type="text" id="add-movie-input" placeholder="Wprowadź reżysera filmu" required onChange={handleDirectorChange}/>
+                <br/>
+                <input type="text" id="add-movie-input" placeholder="Wprowadź gatunek filmu" required onChange={handleGenreChange}/>
+                <br/>
+                <input type="number" id="add-movie-input" placeholder="Wprowadź czas trwania filmu" required
+                       onChange={handleDurationChange}/>
+                <br/>
+                <input type="text"  id="add-movie-input" placeholder="Wprowadź adres url do plakatu filmu" required
+                       onChange={handleImgChange}/>
+                <br/>
+                <br/>
                 <button type="submit" onClick={handleSubmit}>Dodaj</button>
             </div>
         </div>

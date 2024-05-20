@@ -31,10 +31,12 @@
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
+    width: 100px;
+    height: 50px;
 }
 
 .seat.selected {
-    background-color: #646cff;
+    background-color: limegreen;
     color: #fff;
 }
 
@@ -68,7 +70,34 @@ button.disabled{
     color: white;
 }
 button.disabled:hover{
+    background-color: red;
+    color: white;
+    border:none;
+    cursor: not-allowed;
 
 }
 
+.seat-selection-panel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
+.seat-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.seat-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import SendCinemasRequest from "../service/SendCinemasRequest.js";
+import Header from "../components/Header.jsx";
+import '../styles/removeCinemaStyle.css';
 
 function RemoveCinemaPage() {
 
@@ -45,6 +47,7 @@ function RemoveCinemaPage() {
 
     return(
         <>
+            <Header/>
             <div className="remove-cinema-container">
                 <h1>Usuń Kino z listy kin</h1>
                 <div className="cinema-container">

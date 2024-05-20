@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SendCinemasRequest from '../service/SendCinemasRequest';
 import SendAddRoomWithSeatsRequest from '../service/SendAddRoomWithSeatsRequest';
+import Header from "../components/Header.jsx";
+import '../styles/addRoomToCinemaStyle.css';
 
 function AddRoomToCinemaPage() {
     const [cinemas, setCinemas] = useState([]);
@@ -63,6 +65,8 @@ function AddRoomToCinemaPage() {
     };
 
     return (
+        <>
+            <Header/>
         <div className="add-room-to-cinema-form">
             <h1>Dodawanie sali kinowej</h1>
             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -109,7 +113,7 @@ function AddRoomToCinemaPage() {
                 Dodawanie sali kinowej
             </button>
         </div>
-    );
+        </>);
 }
 
 export default AddRoomToCinemaPage;
