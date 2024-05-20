@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import '../styles/SeatReservationPanel.css';
 import SendSeatsRequest from "../service/SendSeatsRequest.js";
-import {useParams} from "react-router-dom";
+import {redirect, useParams, useNavigate} from "react-router-dom";
 import SendScreeningByIdRequest from "../service/SendScreeningByIdRequest.js";
 import SendSeatReservationRequest from "../service/SendSeatReservationRequest.jsx";
 import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import SendReservatedSeatsRequest from "../service/SendReservatedSeatsRequest.js";
+import PaymentPage from "./PaymentPage.jsx";
 
 
 
@@ -166,10 +167,20 @@ const SeatReservationPage = () => {
     const refreshPage = () => {
         window.location.reload();
     };
-    const handleSubmit = async () => {
-        await SendSeatReservationRequest(screening.screening_id, selectedSeats);
-        alert("Zarezerwowano miejsca!");
-        refreshPage();
+
+    const navigate = useNavigate();
+
+
+    const handleSubmit =  () => {
+        navigate(`/payment`, {
+            state: {
+                screeningID: screening.screening_id,
+                seats: selectedSeats
+            }
+        });
+        //await SendSeatReservationRequest(screening.screening_id, selectedSeats);
+        //alert("Zarezerwowano miejsca!");
+        //refreshPage();
     }
 
     return (
