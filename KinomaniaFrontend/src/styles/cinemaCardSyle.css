@@ -1,0 +1,68 @@
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/pin.css');
+@import 'colors.css';
+
+.cinema-icon{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.cinema-card1, .cinema-card {
+    display: flex;
+    background-color: #36393e;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
+    max-width: 450px;
+    min-width: 450px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.cinema-card:hover {
+    box-shadow: 0px 4px 8px rgb(0, 161, 230);
+    transform: scale(1.05);
+}
+
+.cinema-card1 img {
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px;
+}
+
+
+.cinema-info {
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+.cinema-info h2 {
+    margin-top: 0;
+    color: var(--second-color);
+
+}
+
+.cinema-info p {
+    margin: 5px 0;
+    flex: 1;
+    min-width: 0;
+    word-wrap: break-word;
+}
+
+.cinema-info strong {
+    font-weight: bold;
+}
+
+.cinema-info .gg-pin {
+    margin-top: 5px;
+    font-size: 1.5em;
+    margin-right: 5px;
+    color: var(--second-color);
+}

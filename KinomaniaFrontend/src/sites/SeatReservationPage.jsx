@@ -8,16 +8,6 @@ import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import SendReservatedSeatsRequest from "../service/SendReservatedSeatsRequest.js";
 
 
-// const Seat = ({id, row, number, selected, onSelect}) => {
-//     return (
-//         <button
-//             className={`seat ${selected ? 'selected' : ''}`}
-//             onClick={() => onSelect(id)}
-//         >
-//             {`${row}${number}`}
-//         </button>
-//     );
-// };
 
 const Seat = ({ id, row, number, selected, onSelect, disabled }) => {
     return (

@@ -35,32 +35,29 @@ const CinemasPage = ({}) => {
 
     return (
         <>
-            <Header/>
-            <br/>
-            <br/>
-            <div>
+            <Header />
+            <div className="search-container">
                 <h1>Sprawdź czy mamy kino w twoim mieście!</h1>
-                <br/>
                 <input
                     type="text"
                     placeholder="Wyszukaj kino po mieście"
                     value={search}
                     onChange={handleSearchChange}
                 />
-                <div className="cinemas-container">
-                    {filteredCinemas && filteredCinemas.length > 0 ? (
-                        filteredCinemas.map(cinema => (
-                            <div className="cinema-card">
-                                <CinemasCard key={cinema.cinema_id} cinema={cinema}/>
-                            </div>
-                        ))
-                    ) : (
-                        <p>Brak kin w podanej miejscowości - sprawdź pisownie!</p>
-                    )}
-                </div>
+            </div>
+            <div className="cinemas-container">
+                {filteredCinemas && filteredCinemas.length > 0 ? (
+                    filteredCinemas.map(cinema => (
+                        <div key={cinema.cinema_id} className="cinema-card">
+                            <CinemasCard cinema={cinema} />
+                        </div>
+                    ))
+                ) : (
+                    <p>Brak kin w podanej miejscowości - sprawdź pisownie!</p>
+                )}
             </div>
         </>
     );
-}
+};
 
 export default CinemasPage;

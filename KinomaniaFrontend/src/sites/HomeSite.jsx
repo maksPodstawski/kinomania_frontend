@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import MovieCard from "../components/MovieCard.jsx";
 import Header from "../components/Header.jsx";
+import '../styles/homeSite.css'
 
 function HomeSite() {
 
@@ -28,11 +29,9 @@ function HomeSite() {
     );
 
     return (
-        <>
-            <Header/>
-            <br />
-            <br />
-            <div>
+        <div className="HomeSite">
+            <Header className="header"/>
+            <div className="home-page-body">
                 <h1>Wszystkie filmy dostępne w sieci naszych kin!</h1>
                 <input
                     type="text"
@@ -43,14 +42,14 @@ function HomeSite() {
                 <div className="movies-list">
                     {filteredMovies && filteredMovies.length > 0 ? (
                         filteredMovies.map(movie => (
-                            <MovieCard key={movie.movie_id} movie={movie}/>
+                            <MovieCard key={movie.movie_id} movie={movie} className="movie-card"/>
                         ))
                     ) : (
-                        <p>Brak filmów o podanej nazwie :(</p>
+                        <p className="no-movies-message">Brak filmów o podanej nazwie :(</p>
                     )}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 export default HomeSite;
