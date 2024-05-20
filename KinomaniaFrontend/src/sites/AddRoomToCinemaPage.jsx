@@ -3,6 +3,9 @@ import SendCinemasRequest from '../service/SendCinemasRequest';
 import SendAddRoomWithSeatsRequest from '../service/SendAddRoomWithSeatsRequest';
 
 function AddRoomToCinemaPage() {
+    const refreshPage = () => {
+        window.location.reload();
+    };
     const [cinemas, setCinemas] = useState([]);
     const [selectedCinema, setSelectedCinema] = useState("");
     const [roomNumber, setRoomNumber] = useState("");
@@ -56,6 +59,7 @@ function AddRoomToCinemaPage() {
             await SendAddRoomWithSeatsRequest(seatsAndRoomDTO);
             setError(null);
             alert("Udało się dodać salę");
+            refreshPage();
         } catch (error) {
             console.error("Błąd dodawania sali:", error);
             setError("Nie udało się dodać sali.");
