@@ -97,10 +97,10 @@
 }
 
 .toggle-password-again i, .toggle-password i {
-    font-size: 18px; /* Adjust size of the icon */
+    font-size: 18px;
     color: #cccccc;
 }
 
 .toggle-password-again:hover i, .toggle-password:hover i {
-    color: #00a1e6; /* Change color on hover if needed */
+    color: #00a1e6;
 }

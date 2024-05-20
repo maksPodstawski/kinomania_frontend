@@ -36,7 +36,7 @@ function AddScreeningPage() {
                 try {
                     const roomsResponse = await axios.get(`http://localhost:8080/api/v1/getRooms/${selectedCinema}`);
                     setRooms(roomsResponse.data);
-                    setSelectedRoom('');  // Reset selected room when cinema changes
+                    setSelectedRoom('');
                 } catch (error) {
                     console.error('Error fetching rooms:', error);
                 }
