@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/cinemasStyles.css';
+import '../styles/screeningForCinemaStyles.css';
 import Header from "./Header.jsx";
 import { useParams } from 'react-router-dom';
 import SendScreeningsRequest from "../service/SendScreeningsRequest.js";
@@ -70,7 +70,7 @@ const ScreeningForCinema = ({ cinema }) => {
     return (
         <>
             <Header />
-            <div>
+            <div className="screening-for-cinema-form">
                 <div>
                     <h1>Wybierz datę</h1>
                     <DatePicker

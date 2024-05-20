@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/MovieCardStyle.css';
+import '../styles/screeningCardStyle.css';
 import MovieCard from "./MovieCard.jsx";
 import { useNavigate } from "react-router-dom";
 import SendMovieByIdRequest from "../service/SendMovieByIdRequest.jsx";
+
 
 const ScreeningCard = ({ screening, additionalDates }) => {
     const navigate = useNavigate();
@@ -27,8 +28,8 @@ const ScreeningCard = ({ screening, additionalDates }) => {
     };
 
     return (
-        <div className="movie-card">
-            <div className="movie-info">
+        <div className="screening-card">
+            <div className="screening-info">
                 {cinemaObject ? (
                     <MovieCard key={cinemaObject.movie_id} movie={cinemaObject} />
                 ) : (

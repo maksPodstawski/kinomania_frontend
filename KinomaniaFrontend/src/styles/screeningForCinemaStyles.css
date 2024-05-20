@@ -1,6 +1,10 @@
 .screenings-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.screening-for-cinema-form{
+    padding: 150px;
 }
 
 .screening-item {
@@ -11,6 +15,9 @@
 
 .already-rendered {
     margin-left: 10px;
-    color: red; /* Możesz dostosować kolor do swoich potrzeb */
+    color: red;
     font-style: italic;
+}
+.react-datepicker__close-icon {
+    display: none !important;
 }

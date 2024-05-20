@@ -20,15 +20,6 @@
     overflow: auto;
 }
 
-a {
-    font-weight: 500;
-    color: #FF3F3F;
-    text-decoration: inherit;
-}
-
-a:hover {
-    color: #FF3F3F;
-}
 
 body {
     margin: 0;
