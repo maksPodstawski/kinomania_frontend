@@ -176,7 +176,7 @@ const SeatReservationPage = () => {
                 seats: selectedSeats
             }
         });
-        }
+    }
 
     return (
         <>

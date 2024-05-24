@@ -16,6 +16,8 @@ import RemoveCinemaPage from "./sites/RemoveCinemaPage.jsx";
 import AddScreeningPage from "./sites/AddScreeningPage.jsx";
 import PaymentPage from "./sites/PaymentPage.jsx";
 import PaymentSuccessPage from "./sites/PaymentSuccessPage.jsx";
+import WorkerPanelPage from "./sites/WorkerPanelPage.jsx";
+import WorkerAddScreening from "./sites/WorkerAddScreening.jsx";
 
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
                 <Route path="/addroomtocinema" element={<AddRoomToCinemaPage />} />
                 <Route path="/addscreening" element={<AddScreeningPage />} />
                 <Route path="/payment" element={<PaymentPage />} />
+                <Route path="/workerPanel" element={<WorkerPanelPage />} />
+                <Route path="/workeraddscreening" element={<WorkerAddScreening/>}/>
                 <Route path="/payment/success" element={<PaymentSuccessPage />} />
             </Routes>
         </Router>
