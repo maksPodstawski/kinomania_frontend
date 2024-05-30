@@ -1,0 +1,9 @@
+.unlogged-inputs{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.unlogged-inputs input{
+    margin: 10px 0;
+}

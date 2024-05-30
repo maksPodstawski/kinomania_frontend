@@ -18,6 +18,8 @@ import PaymentPage from "./sites/PaymentPage.jsx";
 import PaymentSuccessPage from "./sites/PaymentSuccessPage.jsx";
 import WorkerPanelPage from "./sites/WorkerPanelPage.jsx";
 import WorkerAddScreening from "./sites/WorkerAddScreening.jsx";
+import NoLoggedUserDetailsPage from "./sites/NoLoggedUserDetailsPage.jsx";
+import UnLoggedUserPaymentPage from "./sites/UnLoggedUserPaymentPage.jsx";
 
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
                 <Route path="/workerPanel" element={<WorkerPanelPage />} />
                 <Route path="/workeraddscreening" element={<WorkerAddScreening/>}/>
                 <Route path="/payment/success" element={<PaymentSuccessPage />} />
+                <Route path="/details" element={<NoLoggedUserDetailsPage/>}/>
+                <Route path="/ulpayment" element={<UnLoggedUserPaymentPage/>}/>
             </Routes>
         </Router>
 

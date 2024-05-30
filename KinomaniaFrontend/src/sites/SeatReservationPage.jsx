@@ -9,7 +9,7 @@ import SendReservatedSeatsRequest from "../service/SendReservatedSeatsRequest.js
 import PaymentPage from "./PaymentPage.jsx";
 import Header from "../components/Header.jsx";
 
-const Seat = ({ id, row, number, selected, onSelect, disabled }) => {
+const Seat = ({id, row, number, selected, onSelect, disabled}) => {
     return (
         <button
             className={`seat ${selected ? 'selected' : ''} ${disabled ? 'disabled' : ''}`}
@@ -20,7 +20,6 @@ const Seat = ({ id, row, number, selected, onSelect, disabled }) => {
         </button>
     );
 };
-
 
 
 const SeatReservationPage = () => {
@@ -109,7 +108,6 @@ const SeatReservationPage = () => {
         let rows = [];
 
 
-
         for (let row = 1; row <= numSeatsPerRow; row++) {
             let seatsInRow = [];
             for (let seatNumber = 1; seatNumber <= numSeatsPerColumn; seatNumber++) {
@@ -169,27 +167,37 @@ const SeatReservationPage = () => {
     const navigate = useNavigate();
 
 
-    const handleSubmit =  () => {
-        navigate(`/payment`, {
-            state: {
-                screeningID: screening.screening_id,
-                seats: selectedSeats
-            }
-        });
+    const handleSubmit = () => {
+        if (localStorage.getItem('token') != null) {
+            navigate(`/payment`, {
+                state: {
+                    screeningID: screening.screening_id,
+                    seats: selectedSeats
+                }
+            });
+        }
+        else{
+            navigate(`/details`, {
+                state: {
+                    screeningID: screening.screening_id,
+                    seats: selectedSeats
+                }
+            });
+        }
     }
 
     return (
         <>
             <Header/>
-        <div className="seat-selection-panel">
-            <h2>Wybierz miejsce w kinie</h2>
-            <div className="seats-container">{renderSeats()}</div>
-            <p>Wybrane miejsca: {selectedSeats.map(seatId => {
-                const seat = seats.find(seat => seat.seat_id === seatId);
-                return seat ? `(${String.fromCharCode(64 + seat.seat_row)}${seat.seat_column})` : '';
-            }).join(', ')}</p>
-            <button onClick={handleSubmit}>Zarezerwuj miejsca!</button>
-        </div>
+            <div className="seat-selection-panel">
+                <h2>Wybierz miejsce w kinie</h2>
+                <div className="seats-container">{renderSeats()}</div>
+                <p>Wybrane miejsca: {selectedSeats.map(seatId => {
+                    const seat = seats.find(seat => seat.seat_id === seatId);
+                    return seat ? `(${String.fromCharCode(64 + seat.seat_row)}${seat.seat_column})` : '';
+                }).join(', ')}</p>
+                <button onClick={handleSubmit}>Zarezerwuj miejsca!</button>
+            </div>
         </>);
 };
 
