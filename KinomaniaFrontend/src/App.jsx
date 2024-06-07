@@ -21,6 +21,7 @@ import WorkerAddScreening from "./sites/WorkerAddScreening.jsx";
 import NoLoggedUserDetailsPage from "./sites/NoLoggedUserDetailsPage.jsx";
 import UnLoggedUserPaymentPage from "./sites/UnLoggedUserPaymentPage.jsx";
 import CancelPaymentPage from "./sites/CancelPaymentPage.jsx";
+import AddEmployeePage from "./sites/AddEmployeePage.jsx";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
                 <Route path="/reservation/:screening_id" element={<SeatReservationPage />} />
                 <Route path="/removecinema" element={<RemoveCinemaPage />} />
                 <Route path="/addcinema" element={<AddCinemaPage />} />
+                <Route path="/addemployee" element={<AddEmployeePage />} />
                 <Route path="/addroomtocinema" element={<AddRoomToCinemaPage />} />
                 <Route path="/addscreening" element={<AddScreeningPage />} />
                 <Route path="/payment" element={<PaymentPage />} />

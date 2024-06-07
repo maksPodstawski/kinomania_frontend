@@ -3,10 +3,7 @@ import '../styles/SeatReservationPanel.css';
 import SendSeatsRequest from "../service/SendSeatsRequest.js";
 import {useNavigate, useParams} from "react-router-dom";
 import SendScreeningByIdRequest from "../service/SendScreeningByIdRequest.js";
-import SendSeatReservationRequest from "../service/SendSeatReservationRequest.jsx";
-import SendMoviesRequest from "../service/SendMoviesRequest.js";
 import SendReservatedSeatsRequest from "../service/SendReservatedSeatsRequest.js";
-import PaymentPage from "./PaymentPage.jsx";
 import Header from "../components/Header.jsx";
 
 const Seat = ({id, row, number, selected, onSelect, disabled}) => {

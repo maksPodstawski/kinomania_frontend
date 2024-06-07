@@ -2,7 +2,7 @@ import Header from "../components/Header.jsx";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
-import { format } from 'date-fns';
+import {format} from 'date-fns';
 
 const WorkerAddScreening = () =>{
 
