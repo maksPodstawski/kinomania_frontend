@@ -30,6 +30,9 @@ const Header = () => {
     const goToWorkerPanel = () =>{
         navigate('/workerPanel');
     }
+    const goToMyTickets = () =>{
+        navigate('/mytickets');
+    }
 
     if(localStorage.getItem('username') !== null) {
         if(localStorage.getItem('authorities') === "ROLE_ADMIN"){
@@ -41,6 +44,7 @@ const Header = () => {
                         </div>
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
+                            <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>
                             <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                             <button className="button-panel" onClick={goToPanel}>Panel</button>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
