@@ -11,5 +11,7 @@ const SendUnloggedUserReservationRequest = async (UserData)=>{
         .catch((błąd) => {
             console.error('Błąd podczas wykonywania żądania POST:', błąd);
         });
+
+
 }
 export default SendUnloggedUserReservationRequest;

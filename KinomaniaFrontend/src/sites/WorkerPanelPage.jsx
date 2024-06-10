@@ -12,6 +12,9 @@ const WorkerPanelPage = () => {
     const handleWrongUser = () => {
         navigate('/');
     }
+    const handleAddVipStatus = () =>{
+        navigate('/addvipstatus');
+    }
 
     if (localStorage.getItem('authorities') === "ROLE_WORKER") {
         return (
@@ -19,6 +22,7 @@ const WorkerPanelPage = () => {
                 <Header/>
                 <div className="content">
                     <button onClick={onAddScrenning}>Dodaj seans</button>
+                    <button onClick={handleAddVipStatus}>Nadaj status VIP</button>
                 </div>
             </>
         )
