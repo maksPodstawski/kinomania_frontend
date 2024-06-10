@@ -43,7 +43,7 @@ const MyTicketsPage = () => {
             {/*    <h2 key={index}>{reservation.reservationId}</h2>*/}
 
             {/*))}*/}
-
+            <div className="myTicket-container">
             {reservationsForUser && reservationsForUser.length > 0 ? (
                 reservationsForUser.map((reservation, index) => (
                     <MyTicketCard key={index} reservation={reservation} className="ticket-card" />
@@ -51,6 +51,7 @@ const MyTicketsPage = () => {
             ) : (
                 <p className="no-reservations-message">Brak rezerwacji :(</p>
             )}
+            </div>
         </div>
         </>);
 }
