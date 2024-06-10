@@ -38,12 +38,12 @@ const MyTicketsPage = () => {
             <br />
             <br />
             <br />
-           <h1>Twoje bilety XD: :D d(-_-)b</h1>
+           <h1>Twoje bilety:</h1>
             {/*{Array.isArray(reservationsForUser) && reservationsForUser.map((reservation, index) => (*/}
             {/*    <h2 key={index}>{reservation.reservationId}</h2>*/}
 
             {/*))}*/}
-            <div className="myTicket-container">
+            <div className="myTicket-card-container">
             {reservationsForUser && reservationsForUser.length > 0 ? (
                 reservationsForUser.map((reservation, index) => (
                     <MyTicketCard key={index} reservation={reservation} className="ticket-card" />
