@@ -23,6 +23,7 @@ import UnLoggedUserPaymentPage from "./sites/UnLoggedUserPaymentPage.jsx";
 import CancelPaymentPage from "./sites/CancelPaymentPage.jsx";
 import AddEmployeePage from "./sites/AddEmployeePage.jsx";
 import MyTicketsPage from "./sites/MyTicketsPage.jsx";
+import AddVipStatusPage from "./sites/AddVipStatusPage.jsx";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
                 <Route path="/ulpayment" element={<UnLoggedUserPaymentPage/>}/>
                 <Route path="/payment/cancel" element={<CancelPaymentPage/>}/>
                 <Route path="/mytickets" element={<MyTicketsPage />}/>
+                <Route path="/addvipstatus" element={<AddVipStatusPage/>}/>
             </Routes>
         </Router>
 
