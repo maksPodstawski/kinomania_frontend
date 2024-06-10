@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import SendAddCinemaRequest from "../service/SendAddCinemaRequest.jsx";
 import Header from "../components/Header.jsx";
 import '../styles/addCinemaStyle.css';
 import SendCinemasRequest from "../service/SendCinemasRequest.js";
+import SendAddEmployeeRequest from "../service/SendAddEmployeeRequest.jsx";
+import SendUsersRequest from "../service/SendUsersRequest.jsx";
+import SendPositionsRequest from "../service/SendPositionsRequest.jsx";
 
 function AddEmployeePage() {
-    const [cinemaName, setCinemaName] = useState("");
-    const [cinemaAddress, setCinemaAddress] = useState("");
-    const [cinemaURL, setCinemaURL] = useState("");
     const [selectedCinema, setSelectedCinema] = useState("");
+    const [selectedPosition, setSelectedPosition] = useState("");
+    const [selectedUser, setSelectedUser] = useState("");
+    const [employeeName, setEmployeeName] = useState("");
+    const [employeeSurname, setEmployeeSurname] = useState("");
     const [cinemas, setCinemas] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [positions, setPositions] = useState([]);
 
     useEffect(() => {
         async function fetchCinemas() {
@@ -23,30 +28,54 @@ function AddEmployeePage() {
         fetchCinemas();
     }, []);
 
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                let userList = await SendUsersRequest();
+                userList = userList.filter(user => user.role === 'ROLE_USER');
+                setUsers(userList);
+            } catch (error) {
+                console.error("Error fetching users:", error);
+            }
+        }
+        fetchUsers();
+    }, []);
 
-    const handleCinemaCityChange = (event) => {
-        setCinemaName(event.target.value);
-    }
-
-    const handleCinemaAdressChange = (event) => {
-        setCinemaAddress(event.target.value);
-    }
-
-    const handleCinemaURLChange = (event) => {
-        setCinemaURL(event.target.value);
-    }
-
-    console.log(cinemaName);
-    console.log(cinemaAddress);
-    console.log(cinemaURL);
-
-    const handleSubmit = async () => {
-        await SendAddCinemaRequest(cinemaName, cinemaAddress, cinemaURL);
-    }
+    useEffect(() => {
+        async function fetchPositions() {
+            try {
+                const positionList = await SendPositionsRequest();
+                setPositions(positionList);
+            } catch (error) {
+                console.error("Error fetching positions:", error);
+            }
+        }
+        fetchPositions();
+    }, []);
 
     const handleCinemaChange = (event) => {
         setSelectedCinema(event.target.value);
     };
+
+    const handlePositionChange = (event) => {
+        setSelectedPosition(event.target.value);
+    };
+
+    const handleUserChange = (event) => {
+        setSelectedUser(event.target.value);
+    };
+
+    const handleNameChange = (event) => {
+        setEmployeeName(event.target.value);
+    };
+
+    const handleSurnameChange = (event) => {
+        setEmployeeSurname(event.target.value);
+    };
+
+    const handleSubmit = async () => {
+        await SendAddEmployeeRequest(null, employeeName, employeeSurname, selectedCinema, selectedPosition, selectedUser);
+    }
 
     return (
         <>
@@ -63,18 +92,29 @@ function AddEmployeePage() {
                     ))}
                 </select>
                 <br/>
-                <input id="cinemaLocation" name="cinemaLocation" type="text"
-                       placeholder="Wybierz stanowisko" required
-                       onChange={handleCinemaAdressChange}/>
+                <select onChange={handleUserChange} value={selectedUser}>
+                    <option value="">Wybierz użytkownika</option>
+                    {users.map(user => (
+                        <option key={user.user_id} value={user.user_id}>
+                            {user.username}
+                        </option>
+                    ))}
+                </select>
                 <br/>
-                <input id="cinemaURL" name="cinemaURL" type="text" placeholder="Wybierz użytkownika"
-                       required onChange={handleCinemaURLChange}/>
+                <select onChange={handlePositionChange} value={selectedPosition}>
+                    <option value="">Wybierz stanowisko</option>
+                    {positions.map(position => (
+                        <option key={position.position_id} value={position.position_id}>
+                            {position.position_name}
+                        </option>
+                    ))}
+                </select>
                 <br/>
-                <input id="cinemaURL" name="cinemaURL" type="text" placeholder="Wprowadź Imię pracownika"
-                       required onChange={handleCinemaURLChange}/>
+                <input id="name" name="name" type="text" placeholder="Wprowadź Imię pracownika"
+                       required onChange={handleNameChange}/>
                 <br/>
-                <input id="cinemaURL" name="cinemaURL" type="text" placeholder="Wprowadź Nazwisko pracownika"
-                       required onChange={handleCinemaURLChange}/>
+                <input id="surname" name="surname" type="text" placeholder="Wprowadź Nazwisko pracownika"
+                       required onChange={handleSurnameChange}/>
                 <br/>
                 <button onClick={handleSubmit} type="submit">Dodaj pracownika</button>
             </div>
