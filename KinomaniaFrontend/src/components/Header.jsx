@@ -97,7 +97,6 @@ const Header = () => {
                         <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                     </div>
                     <div className="header-buttons">
-                        <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>
                         <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                         <button className="loginComponent" onClick={goToLogin}>Zaloguj się</button>
                         <button className="registerComponent" onClick={goToRegister}>Zarejestruj się</button>
