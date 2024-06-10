@@ -63,6 +63,7 @@ const Header = () => {
                         </div>
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
+                            <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>
                             <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                             <button className="button-panel" onClick={goToWorkerPanel}>Panel</button>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
@@ -70,9 +71,7 @@ const Header = () => {
                     </div>
                 </>
             )
-        }
-
-        else {
+        } else {
             return (
                 <>
                     <div className="header">
@@ -81,6 +80,7 @@ const Header = () => {
                         </div>
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
+                            <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>
                             <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                             <button className="button-logout" onClick={handleLogout}>Wyloguj</button>
                         </div>
@@ -89,8 +89,7 @@ const Header = () => {
             )
         }
 
-    }
-    else{
+    } else{
         return (
             <>
                 <div className="header">
@@ -98,6 +97,7 @@ const Header = () => {
                         <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                     </div>
                     <div className="header-buttons">
+                        <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>
                         <button className="button-cinemas" onClick={goToCinemas}>Kina</button>
                         <button className="loginComponent" onClick={goToLogin}>Zaloguj się</button>
                         <button className="registerComponent" onClick={goToRegister}>Zarejestruj się</button>
