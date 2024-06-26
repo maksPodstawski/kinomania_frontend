@@ -75,6 +75,7 @@ const SeatReservationPage = () => {
             }
         };
         if (screening_id != null) {
+            setInterval(()=>fetchReservatedSeats(), 1000);
             fetchReservatedSeats();
         }
 
@@ -109,15 +110,13 @@ const SeatReservationPage = () => {
             let seatsInRow = [];
             for (let seatNumber = 1; seatNumber <= numSeatsPerColumn; seatNumber++) {
                 const seat = seats.find(seat => seat.seat_row === row && seat.seat_column === seatNumber);
-                // console.log("TO PIERWSZE"+seat.seat_id);
-                //console.log("TO Drugie"+reservatedSeats.seat_id);
+
 
                 let tabReservedSeats = [];
                 for (let i = 0; i < reservatedSeats.length; i++) {
                     tabReservedSeats.push(reservatedSeats[i].seat_id);
                 }
 
-                //console.log(tabReservedSeats[0].seat_id);
 
                 if (tabReservedSeats.includes(seat.seat_id)) {
                     if (seat) {

@@ -24,6 +24,7 @@ import CancelPaymentPage from "./sites/CancelPaymentPage.jsx";
 import AddEmployeePage from "./sites/AddEmployeePage.jsx";
 import MyTicketsPage from "./sites/MyTicketsPage.jsx";
 import AddVipStatusPage from "./sites/AddVipStatusPage.jsx";
+import PasswordRecoveryPage from "./sites/PasswordRecoveryPage.jsx";
 
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
                 <Route path="/payment/cancel" element={<CancelPaymentPage/>}/>
                 <Route path="/mytickets" element={<MyTicketsPage />}/>
                 <Route path="/addvipstatus" element={<AddVipStatusPage/>}/>
+                <Route path="/passwordRecovery/:code" element={<PasswordRecoveryPage />}/>
             </Routes>
         </Router>
 
