@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import  '../styles/addMovieStyle.css';
+import '../styles/addMovieStyle.css';
 import Header from "../components/Header.jsx";
 
 function AddMoviePage() {
@@ -35,8 +35,32 @@ function AddMoviePage() {
         window.location.reload();
     };
 
-
     const handleSubmit = async () => {
+        if (title.trim() === "") {
+            alert("Proszę wpisać nazwę filmu.");
+            return;
+        }
+        if (description.trim() === "") {
+            alert("Proszę wpisać opis filmu.");
+            return;
+        }
+        if (genre.trim() === "") {
+            alert("Proszę wpisać gatunek filmu.");
+            return;
+        }
+        if (director.trim() === "") {
+            alert("Proszę wpisać reżysera filmu.");
+            return;
+        }
+        if (duration <= 0) {
+            alert("Proszę wpisać poprawny czas trwania filmu.");
+            return;
+        }
+        if (img.trim() === "") {
+            alert("Proszę wpisać adres URL do plakatu filmu.");
+            return;
+        }
+
         const movieData = {
             title: title,
             description: description,
@@ -53,45 +77,83 @@ function AddMoviePage() {
             Authorization: `Bearer ${token}`,
         }
 
-
-
-        axios.post(url, movieData, {headers: headers})
-            .then(response => {
-                console.log('Film dodany:', response.data)
-                alert("Dodano film");
-                refreshPage();
-            })
-            .catch(error => {
-                console.error('Błąd podczas dodawania filmu:', error);
-            });
+        try {
+            const response = await axios.post(url, movieData, { headers: headers });
+            console.log('Film dodany:', response.data);
+            alert("Dodano film");
+            refreshPage();
+        } catch (error) {
+            console.error('Błąd podczas dodawania filmu:', error);
+            alert("Wystąpił błąd podczas dodawania filmu. Spróbuj ponownie później.");
+        }
     }
 
-    return(
+    return (
         <>
-            <Header/>
-        <div className="add-movie-container">
-            <h1>Dodaj Film</h1>
-            <div className="movie-container">
-                <input type="text" id="add-movie-input" placeholder="Wprowadź nazwę filmu" required onChange={handleTitleChange}/>
-                <br/>
-                <input type="text" id="add-movie-input" placeholder="Wprowadź opis filmu" required onChange={handleDescriptionChange}/>
-                <br/>
-                <input type="text" id="add-movie-input" placeholder="Wprowadź reżysera filmu" required onChange={handleDirectorChange}/>
-                <br/>
-                <input type="text" id="add-movie-input" placeholder="Wprowadź gatunek filmu" required onChange={handleGenreChange}/>
-                <br/>
-                <input type="number" id="add-movie-input" placeholder="Wprowadź czas trwania filmu" required
-                       onChange={handleDurationChange}/>
-                <br/>
-                <input type="text"  id="add-movie-input" placeholder="Wprowadź adres url do plakatu filmu" required
-                       onChange={handleImgChange}/>
-                <br/>
-                <br/>
-                <button type="submit" onClick={handleSubmit}>Dodaj</button>
+            <Header />
+            <div className="add-movie-container">
+                <h1>Dodaj Film</h1>
+                <div className="movie-container">
+                    <input
+                        type="text"
+                        id="add-movie-input"
+                        placeholder="Wprowadź nazwę filmu"
+                        required
+                        onChange={handleTitleChange}
+                        value={title}
+                    />
+                    <br/>
+                    <input
+                        type="text"
+                        id="add-movie-input"
+                        placeholder="Wprowadź opis filmu"
+                        required
+                        onChange={handleDescriptionChange}
+                        value={description}
+                    />
+                    <br/>
+                    <input
+                        type="text"
+                        id="add-movie-input"
+                        placeholder="Wprowadź reżysera filmu"
+                        required
+                        onChange={handleDirectorChange}
+                        value={director}
+                    />
+                    <br/>
+                    <input
+                        type="text"
+                        id="add-movie-input"
+                        placeholder="Wprowadź gatunek filmu"
+                        required
+                        onChange={handleGenreChange}
+                        value={genre}
+                    />
+                    <br/>
+                    <input
+                        type="number"
+                        id="add-movie-input"
+                        placeholder="Wprowadź czas trwania filmu"
+                        required
+                        onChange={handleDurationChange}
+                        value={duration}
+                    />
+                    <br/>
+                    <input
+                        type="text"
+                        id="add-movie-input"
+                        placeholder="Wprowadź adres url do plakatu filmu"
+                        required
+                        onChange={handleImgChange}
+                        value={img}
+                    />
+                    <br/>
+                    <br/>
+                    <button type="submit" onClick={handleSubmit}>Dodaj</button>
+                </div>
             </div>
-        </div>
         </>
-    )
+    );
 }
 
 export default AddMoviePage;
