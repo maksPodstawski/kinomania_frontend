@@ -20,7 +20,7 @@ const WorkerPanelPage = () => {
         return (
             <>
                 <Header/>
-                <div className="content">
+                <div className="worker-panel-content">
                     <button onClick={onAddScrenning}>Dodaj seans</button>
                     <button onClick={handleAddVipStatus}>Nadaj status VIP</button>
                 </div>

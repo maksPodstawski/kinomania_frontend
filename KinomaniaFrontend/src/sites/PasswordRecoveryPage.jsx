@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { useState } from "react";
 import SendPasswordRecovery from "../service/SendPasswordRecovery.js";
 import Header from "../components/Header.jsx";
@@ -11,19 +11,29 @@ const PasswordRecoveryPage = () => {
     const [firstPassword, setFirstPassword] = useState("");
     const [secondPassword, setSecondPassword] = useState("");
 
+    const navigate = useNavigate();
+
     const handleFirstPasswordChange = (e) => {
         setFirstPassword(e.target.value);
     }
     const handleSecondPasswordChange = (e) => {
         setSecondPassword(e.target.value);
     }
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!firstPassword.length && !secondPassword.length) {
             alert("Pola nie mogą być puste");
         } else if (firstPassword !== secondPassword) {
             alert("Hasła muszą być takie same");
         } else {
-            SendPasswordRecovery(code, firstPassword);
+            const response = await SendPasswordRecovery(code, firstPassword);
+            if (response.data.statusCode === 1) {
+                alert("Zmieniono hasło pomyślnie");
+                navigate("/");
+            }
+            else {
+                alert(response.data.message);
+                navigate("/");
+            }
         }
     }
 
