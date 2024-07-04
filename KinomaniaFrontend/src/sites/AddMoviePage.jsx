@@ -11,6 +11,7 @@ function AddMoviePage() {
     const [director, setDirector] = useState('');
     const [duration, setDuration] = useState(0);
     const [img, setImg] = useState('');
+    const [error, setError] = useState(null);
 
     const handleTitleChange = (event) => {
         setTitle(event.target.value);
@@ -37,27 +38,27 @@ function AddMoviePage() {
 
     const handleSubmit = async () => {
         if (title.trim() === "") {
-            alert("Proszę wpisać nazwę filmu.");
+            setError("Proszę wpisać nazwę filmu.");
             return;
         }
         if (description.trim() === "") {
-            alert("Proszę wpisać opis filmu.");
+            setError("Proszę wpisać opis filmu.");
             return;
         }
         if (genre.trim() === "") {
-            alert("Proszę wpisać gatunek filmu.");
+            setError("Proszę wpisać gatunek filmu.");
             return;
         }
         if (director.trim() === "") {
-            alert("Proszę wpisać reżysera filmu.");
+            setError("Proszę wpisać reżysera filmu.");
             return;
         }
         if (duration <= 0) {
-            alert("Proszę wpisać poprawny czas trwania filmu.");
+            setError("Proszę wpisać poprawny czas trwania filmu.");
             return;
         }
         if (img.trim() === "") {
-            alert("Proszę wpisać adres URL do plakatu filmu.");
+            setError("Proszę wpisać adres URL do plakatu filmu.");
             return;
         }
 
@@ -93,6 +94,7 @@ function AddMoviePage() {
             <Header />
             <div className="add-movie-container">
                 <h1>Dodaj Film</h1>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <div className="movie-container">
                     <input
                         type="text"

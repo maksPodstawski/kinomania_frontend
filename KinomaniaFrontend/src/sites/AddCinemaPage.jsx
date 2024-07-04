@@ -7,6 +7,7 @@ function AddCinemaPage() {
     const [cinemaName, setCinemaName] = useState("");
     const [cinemaAddress, setCinemaAddress] = useState("");
     const [cinemaURL, setCinemaURL] = useState("");
+    const [error, setError] = useState(null);
 
     const handleCinemaCityChange = (event) => {
         setCinemaName(event.target.value);
@@ -22,22 +23,22 @@ function AddCinemaPage() {
 
     const handleSubmit = async () => {
         if (cinemaName.trim() === "") {
-            alert("Proszę wpisać miasto.");
+            setError("Proszę wpisać miasto.");
             return;
         }
         if (cinemaAddress.trim() === "") {
-            alert("Proszę wpisać adres.");
+            setError("Proszę wpisać adres.");
             return;
         }
         if (cinemaURL.trim() === "") {
-            alert("Proszę wpisać URL obrazu kina.");
+            setError("Proszę wpisać URL obrazu kina.");
             return;
         }
 
         try {
             await SendAddCinemaRequest(cinemaName, cinemaAddress, cinemaURL);
         } catch (error) {
-            alert("Wystąpił błąd podczas dodawania kina. Spróbuj ponownie później.");
+            setError("Wystąpił błąd podczas dodawania kina. Spróbuj ponownie później.");
         }
     }
 
@@ -46,6 +47,7 @@ function AddCinemaPage() {
             <Header/>
             <div className="add-cinema-form">
                 <h1>Dodawanie nowej lokalizacji kin do sieci kin</h1>
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <input
                     id="cinemaName"
                     name="cinemaName"

@@ -15,6 +15,8 @@ function AddEmployeePage() {
     const [cinemas, setCinemas] = useState([]);
     const [users, setUsers] = useState([]);
     const [positions, setPositions] = useState([]);
+    const [error, setError] = useState(null);
+
 
     useEffect(() => {
         async function fetchCinemas() {
@@ -74,6 +76,27 @@ function AddEmployeePage() {
     };
 
     const handleSubmit = async () => {
+        if(!selectedCinema) {
+            setError("Proszę wybrać kino.");
+            return;
+        }
+        if (!selectedUser) {
+            setError("Proszę wybrać użytkownika.");
+            return;
+        }
+        if (!selectedPosition) {
+            setError("Proszę wybrać stanowisko.");
+            return;
+        }
+        if (!employeeName) {
+            setError("Proszę wpisać imię.");
+            return;
+        }
+        if (!employeeSurname) {
+            setError("Proszę wpisać nazwisko.");
+            return;
+        }
+
         await SendAddEmployeeRequest(null, employeeName, employeeSurname, selectedCinema, selectedPosition, selectedUser);
     }
 
@@ -82,7 +105,7 @@ function AddEmployeePage() {
             <Header/>
             <div className="add-cinema-form">
                 <h1>Dodawanie nowego pracownika kina</h1>
-
+                {error && <p style={{ color: 'red' }}>{error}</p>}
                 <select onChange={handleCinemaChange} value={selectedCinema}>
                     <option value="">Wybierz kino</option>
                     {cinemas.map(cinema => (
