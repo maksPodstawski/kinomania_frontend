@@ -48,8 +48,9 @@ function RegisterComponent() {
             return;
         }
 
-        if (!email.trim()) {
-            alert("Email nie może być pusty!");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert("Email jest niepoprawny!");
             return;
         }
 

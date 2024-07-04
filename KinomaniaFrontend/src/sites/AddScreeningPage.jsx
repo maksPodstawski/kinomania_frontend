@@ -15,6 +15,7 @@ function AddScreeningPage() {
     const [selectedRoom, setSelectedRoom] = useState('');
     const [datetime, setDatetime] = useState(new Date());
     const [price, setPrice] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchMoviesAndCinemas = async () => {
@@ -64,6 +65,25 @@ function AddScreeningPage() {
     };
 
     const handleSubmit = async () => {
+        if(!selectedMovie) {
+            setError("Proszę wybrać film.");
+            return;
+        }
+        if (!selectedCinema) {
+            setError("Proszę wybrać kino.");
+            return;
+        }
+        if (!selectedRoom) {
+            setError("Proszę wybrać salę.");
+            return;
+        }
+        if (!price || price <= 0) {
+            setError("Proszę wpisać poprawną cene.");
+            return;
+        }
+
+
+
         const token = localStorage.getItem('token');
         const headers = {
             Authorization: `Bearer ${token}`,
@@ -89,11 +109,15 @@ function AddScreeningPage() {
         }
     };
 
+
+
+
     return (
         <>
             <Header />
         <div className="add-screening-form">
             <h1>Dodaj nowy seans</h1>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <label>
                 <select value={selectedMovie} onChange={handleMovieChange} id="add-screening-input">
                     <option value="">Wybierz film</option>

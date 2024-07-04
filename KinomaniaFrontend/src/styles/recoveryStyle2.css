@@ -1,7 +1,7 @@
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/eye.css');
 @import url('https://unpkg.com/css.gg@2.0.0/icons/css/eye-alt.css');
 
-.loginPage-form {
+.passwordRecoveryPage-form {
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -11,7 +11,7 @@
     color: black;
 }
 
-.login-form {
+.password-recovery-form {
     width: 350px;
     padding: 40px;
     background: #ffffff;
@@ -24,8 +24,24 @@
     animation: fadeIn 1s ease-in-out;
 }
 
-.login-form input {
+.recovery-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.recovery-code {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.password-recovery-inputs {
     width: 100%;
+}
+
+.password-recovery-form input {
+    width: 91%;
     padding: 15px;
     margin: 10px 0;
     border-radius: 5px;
@@ -33,14 +49,12 @@
     transition: border-color 0.3s;
 }
 
-
-
-.login-form input:focus {
+.password-recovery-form input:focus {
     border-color: #2575fc;
     outline: none;
 }
 
-.login-form button {
+.password-recovery-form button {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
@@ -52,16 +66,14 @@
     transition: background 0.3s, transform 0.3s;
 }
 
-.login-form button:hover {
+.password-recovery-form button:hover {
     background: linear-gradient(to right, #2575fc, #6a11cb);
     transform: translateY(-2px);
 }
 
-.login-form button:active {
+.password-recovery-form button:active {
     transform: translateY(0);
 }
-
-
 
 @keyframes fadeIn {
     from {
@@ -80,7 +92,7 @@
 }
 
 @media (max-width: 400px) {
-    .login-form {
+    .password-recovery-form {
         width: 90%;
         padding: 20px;
     }
@@ -92,13 +104,13 @@
     padding-right: 32px;
 }
 
-.loginPage-form .recover-password:hover{
+.passwordRecoveryPage-form .recover-password:hover {
     cursor: pointer;
 }
 
 .input-container input {
     width: 109%;
-    padding-right: 40px;
+    padding-right: 240px;
     box-sizing: border-box;
 }
 
@@ -121,12 +133,12 @@
 .toggle-password:hover i {
     color: #00a1e6;
 }
-.recover-password{
+
+.recover-password {
     margin-top: 20px;
     color: #00a1e6;
 }
-.recover-password:hover{
 
+.recover-password:hover {
     color: #0086bc;
 }
-
