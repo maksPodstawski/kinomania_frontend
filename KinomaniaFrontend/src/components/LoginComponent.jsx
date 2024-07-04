@@ -42,6 +42,10 @@ function LoginComponent() {
         }
     };
 
+    const handleResetPassword = () => {
+        navigate(`/recoverMyPassword`);
+    }
+
     return (
         <>
             <LogRegHeader/>
@@ -68,9 +72,10 @@ function LoginComponent() {
                         <span className="toggle-password" onClick={togglePasswordVisibility}>
         {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
             </span>
+                        <a className="recover-password" onClick={handleResetPassword}>Kliknij tutaj, aby zresetować hasło</a>
                     </div>
                     <button onClick={handleSubmit} type="submit">
-                        Zaloguj się
+                    Zaloguj się
                     </button>
                     {token && <p>Token: {token}</p>}
                 </div>
