@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import SendLoginRequest from '../service/SendLoginRequest.jsx';
 import '../styles/loggingPageStyles.css';
 import {jwtDecode} from 'jwt-decode';
-import {useNavigate} from 'react-router-dom';
+import {redirect, useNavigate} from 'react-router-dom';
 import LogRegHeader from "./LogRegHeader.jsx";
 
 function LoginComponent() {
@@ -72,11 +72,13 @@ function LoginComponent() {
                         <span className="toggle-password" onClick={togglePasswordVisibility}>
         {showPassword ? <i className="gg-eye-alt"></i> : <i className="gg-eye"></i>}
             </span>
-                        <a className="recover-password" onClick={handleResetPassword}>Kliknij tutaj, aby zresetować hasło</a>
+
                     </div>
                     <button onClick={handleSubmit} type="submit">
-                    Zaloguj się
+                        Zaloguj się
                     </button>
+                    <a className="recover-password" onClick={handleResetPassword}>Kliknij tutaj, aby zresetować
+                        hasło</a>
                     {token && <p>Token: {token}</p>}
                 </div>
             </div>
