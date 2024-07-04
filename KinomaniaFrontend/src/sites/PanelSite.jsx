@@ -37,6 +37,9 @@ const PanelSite = () => {
     const handleAddEmployee = () => {
         navigate('/addemployee');
     }
+    const handleRaport=()=>{
+        navigate('/raports')
+    }
 
 
     if (localStorage.getItem('authorities') === "ROLE_ADMIN") {
@@ -70,6 +73,9 @@ const PanelSite = () => {
                     <br/>
                     <div className="panel-site">
                         <button onClick={handleAddEmployee} className="panel-button">Dodaj pracownika</button>
+                    </div>
+                    <div className="panel-site">
+                        <button onClick={handleRaport} className="panel-button">System Raportowania</button>
                     </div>
                 </div>
             </>

@@ -1,0 +1,23 @@
+.report-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.report-table th, .report-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #aaaaaa;
+    min-width: 150px;
+}
+
+.report-table th {
+    background-color: #1e1a1a;
+}
+
+

@@ -1,0 +1,83 @@
+
+.raport-page-cointainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 8rem;
+}
+
+.startDate, .endDate {
+    margin-right: 10px;
+}
+
+.raport-page-buttons {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.raport-page-dates{
+    display: flex;
+    flex-direction: column;
+}
+.raport-page-inputs{
+    padding: 10px;
+    flex: 1;
+    margin-right: 20rem;
+}
+
+.raport-page-button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.raport-page-button:hover {
+    background-color: #0056b3;
+}
+
+.raport-page-table {
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.raport-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.report-table th, .report-table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.raport-page-button-download{
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #3b9f10;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+.raport-page-button-download:hover{
+    background-color: #23600a;
+}
+
+
