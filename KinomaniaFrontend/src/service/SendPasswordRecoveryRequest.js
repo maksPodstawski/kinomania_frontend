@@ -7,11 +7,10 @@ const SendPasswordRecovery = (email)=>{
 
     return  axios.post(url)
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response
         })
-        .catch((err) => {
-            console.error('Błąd podczas wykonywania żądania POST:', err);
+        .catch((error) => {
+            throw error;
         });
 
 

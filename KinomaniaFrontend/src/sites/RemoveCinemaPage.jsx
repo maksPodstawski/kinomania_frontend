@@ -14,7 +14,7 @@ function RemoveCinemaPage() {
             setCinemas(cinemasData);
             setSelectedCinema(cinemasData[0].cinema_id);
         } catch (error) {
-            console.error("Error fetching cinemas:", error);
+            throw error;
         }
     };
     useEffect(() => {
@@ -36,12 +36,11 @@ function RemoveCinemaPage() {
 
         axios.delete(url, {headers: headers})
             .then(response => {
-                console.log('Usunięto kino:', response.data);
                 fetchCinemas();
                 alert("Usunięto kino");
             })
             .catch(error => {
-                console.error('Błąd podczas usuwania kina:', error);
+                throw error;
             });
     }
 

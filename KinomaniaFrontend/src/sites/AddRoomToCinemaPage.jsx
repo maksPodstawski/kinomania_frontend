@@ -21,7 +21,7 @@ function AddRoomToCinemaPage() {
                 const cinemaList = await SendCinemasRequest();
                 setCinemas(cinemaList);
             } catch (error) {
-                console.error("Error fetching cinemas:", error);
+                throw error;
             }
         }
 
@@ -63,8 +63,8 @@ function AddRoomToCinemaPage() {
             alert("Udało się dodać salę");
             refreshPage();
         } catch (error) {
-            console.error("Błąd dodawania sali:", error);
             setError("Nie udało się dodać sali.");
+            throw error;
         }
     };
 

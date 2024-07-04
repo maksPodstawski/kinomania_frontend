@@ -24,7 +24,7 @@ function AddEmployeePage() {
                 const cinemaList = await SendCinemasRequest();
                 setCinemas(cinemaList);
             } catch (error) {
-                console.error("Error fetching cinemas:", error);
+                throw error;
             }
         }
         fetchCinemas();
@@ -37,7 +37,7 @@ function AddEmployeePage() {
                 userList = userList.filter(user => user.role === 'ROLE_USER');
                 setUsers(userList);
             } catch (error) {
-                console.error("Error fetching users:", error);
+                throw error;
             }
         }
         fetchUsers();
@@ -49,7 +49,7 @@ function AddEmployeePage() {
                 const positionList = await SendPositionsRequest();
                 setPositions(positionList);
             } catch (error) {
-                console.error("Error fetching positions:", error);
+                throw error;
             }
         }
         fetchPositions();

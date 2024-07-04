@@ -6,7 +6,6 @@ const MyTicketCard = ({ reservation }) => {
     const { address, city } = room.cinema;
     const { seats } = reservation;
 
-    console.log("Seats:", seats); // Sprawdzenie danych w konsoli
 
     return (
         <div className="myTicket-card">

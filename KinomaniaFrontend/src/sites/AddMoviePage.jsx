@@ -80,12 +80,11 @@ function AddMoviePage() {
 
         try {
             const response = await axios.post(url, movieData, { headers: headers });
-            console.log('Film dodany:', response.data);
             alert("Dodano film");
             refreshPage();
         } catch (error) {
-            console.error('Błąd podczas dodawania filmu:', error);
             alert("Wystąpił błąd podczas dodawania filmu. Spróbuj ponownie później.");
+            throw error;
         }
     }
 

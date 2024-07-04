@@ -11,12 +11,11 @@ async function SendLoginRequest (username, password)
     };
 
     return  axios.post(url, dane)
-            .then((odpowiedź) => {
-              console.log('Odpowiedź serwera:', odpowiedź.data);
-              return odpowiedź.data.accessToken
+            .then((response) => {
+              return response.data.accessToken
             })
-            .catch((błąd) => {
-                console.error('Błąd podczas wykonywania żądania POST:', błąd);
+            .catch((error) => {
+                throw error;
             });
 }
 

@@ -15,10 +15,9 @@ const MyTicketsPage = () => {
         const fetchReservationsForUser = async () => {
             try {
                 const reservationsForUserData = await SendReservationsForUserRequest();
-                console.log(reservationsForUserData);
                 setReservationsForUser(reservationsForUserData);
             } catch (error) {
-                console.error("Error fetching movies:", error);
+                throw error;
             }
         };
 

@@ -1,33 +1,43 @@
 import React, {useEffect, useState} from 'react';
-import {redirect, useLocation} from 'react-router-dom';
+import {redirect, useLocation, useNavigate} from 'react-router-dom';
 import SendSeatReservationRequest from "../service/SendSeatReservationRequest.jsx";
 import SendReservationRequest from "../service/SendReservationWithPayment.jsx";
+import "../styles/paymentPage.css"
+import Header from "../components/Header.jsx";
 
 const PaymentPage = () => {
 
     const location = useLocation();
-    const { screeningID, seats } = location.state || {};
+    const {screeningID, seats, seatsNumbers} = location.state || {} || {};
+
+    const navigate = useNavigate();
 
     const handleNoPayment = async () => {
-        await SendSeatReservationRequest(screeningID, seats);
+        const response = await SendSeatReservationRequest(screeningID, seats);
+        if(response.data.statusCode === 1){
+            alert("Rezerwacja udana");
+            navigate("/");
+        }
     }
 
     const handlePayment = async () => {
         const response = await SendReservationRequest(screeningID, seats);
-        console.log(response.data.url);
-        if(response.data.status === "created"){
+        if (response.data.status === "created") {
             window.location.href = response.data.url;
         }
     }
 
-    return(
-        <div>
-            <h1>Płatność</h1>
-            <p>Screening ID: {screeningID}</p>
-            <p>Seats: {seats?.join(', ')}</p>
-            <button onClick={handlePayment}>Zapłać teraz przez PayPal</button>
-            <button onClick={handleNoPayment}>Zapłać na miejscu</button>
-        </div>
+
+    return (
+        <>
+            <Header/>
+            <div className="payment-page-container">
+                <h1>Płatność</h1>
+                <p>Wybrane siedzenia: {seatsNumbers}</p>
+                <button onClick={handlePayment} className="payment-page-button">Zapłać teraz przez PayPal</button>
+                <button onClick={handleNoPayment} className="payment-page-button">Zapłać na miejscu</button>
+            </div>
+        </>
     );
 }
 

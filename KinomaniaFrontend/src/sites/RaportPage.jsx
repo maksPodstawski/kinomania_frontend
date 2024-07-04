@@ -27,7 +27,6 @@ const RaportPage = () => {
     };
 
     const checkTimeSpan = () => {
-        console.log(`${start} - ${end}`);
         if (start.trim().length <= 0) {
             alert('Podaj datę rozpoczęcia');
             return false;

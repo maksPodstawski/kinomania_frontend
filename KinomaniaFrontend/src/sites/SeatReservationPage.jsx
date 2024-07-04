@@ -45,7 +45,7 @@ const SeatReservationPage = () => {
                 setNumSeatsPerRow(b);
                 setNumSeatsPerColumn(d);
             } catch (error) {
-                console.error("Error fetching movies:", error);
+                throw error;
             }
         };
 
@@ -58,7 +58,7 @@ const SeatReservationPage = () => {
                     fetchSeats(id);
                 }
             } catch (error) {
-                console.error("Error fetching movies:", error);
+                throw error;
             }
         };
         if (screening != null) {
@@ -71,7 +71,7 @@ const SeatReservationPage = () => {
                 let a = reservatedSeatsData;
                 setReservatedSeats(a);
             } catch (error) {
-                console.error("Error fetching movies:", error);
+                throw error;
             }
         };
         if (screening_id != null) {
@@ -164,11 +164,16 @@ const SeatReservationPage = () => {
 
 
     const handleSubmit = () => {
+        const selectedSeatsNumbers = selectedSeats.map(seatId => {
+            const seat = seats.find(seat => seat.seat_id === seatId);
+            return seat ? `(${String.fromCharCode(64 + seat.seat_row)}${seat.seat_column})` : '';
+        }).join(', ')
         if (localStorage.getItem('token') != null) {
             navigate(`/payment`, {
                 state: {
                     screeningID: screening.screening_id,
-                    seats: selectedSeats
+                    seats: selectedSeats,
+                    seatsNumbers: selectedSeatsNumbers
                 }
             });
         }
@@ -176,7 +181,8 @@ const SeatReservationPage = () => {
             navigate(`/details`, {
                 state: {
                     screeningID: screening.screening_id,
-                    seats: selectedSeats
+                    seats: selectedSeats,
+                    seatsNumbers: selectedSeatsNumbers
                 }
             });
         }

@@ -7,10 +7,8 @@ const SendReservationCancel = async (reservarionUUID) => {
                 reservationUUID: reservarionUUID
             }
         });
-        console.log('Response:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error during payment:', error);
         throw error;
     }
 }

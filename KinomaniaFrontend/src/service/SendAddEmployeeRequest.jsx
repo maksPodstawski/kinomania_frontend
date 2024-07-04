@@ -22,12 +22,11 @@ const SendAddEmployeeRequest = async (employeeId, name, surname, cinemaId, posit
 
     axios.post(url, EmployeeData, {headers: headers})
         .then(response => {
-            console.log('Dodano pracownika:', response.data)
             alert("Dodano pracownika");
             refreshPage();
         })
         .catch(error => {
-            console.error('Błąd podczas dodawania pracownika:', error);
+            throw error;
         });
 }
 

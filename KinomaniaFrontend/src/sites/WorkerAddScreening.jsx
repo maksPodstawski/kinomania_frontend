@@ -14,6 +14,7 @@ const WorkerAddScreening = () =>{
     const [selectedRoom, setSelectedRoom] = useState('');
     const [datetime, setDatetime] = useState(new Date());
     const [price, setPrice] = useState('');
+    const [cinemaAddress, setCinemaAddress] = useState('');
 
 
     useEffect(() => {
@@ -29,9 +30,9 @@ const WorkerAddScreening = () =>{
                     setRooms(roomsResponse.data);
                     setSelectedRoom('');
                     setSelectedCinema(roomsResponse.data[0].cinema.cinema_id);
-                    console.log(roomsResponse.data[0].cinema.cinema_id);
+                    setCinemaAddress(roomsResponse.data[0].cinema.address);
                 } catch (error) {
-                    console.error('Error fetching rooms:', error);
+                    throw error;
                 }
         };
         if(rooms.length === 0) {
@@ -63,6 +64,11 @@ const WorkerAddScreening = () =>{
 
         const formattedDatetime = format(datetime, 'yyyy-MM-dd HH:mm:ss.SSSSSS');
 
+        if(datetime < Date.now()) {
+            alert("Nie można ustawić seansu w przeszłośći");
+            return;
+        }
+
         const screeningData = {
             cinemaId: selectedCinema,
             movieId: selectedMovie,
@@ -71,15 +77,14 @@ const WorkerAddScreening = () =>{
             price: parseFloat(price),
         };
 
-        console.log(screeningData);
 
         try {
             await axios.post('http://localhost:8080/api/v1/worker/addScreening', screeningData, { headers });
             alert('Seans dodano poprawnie');
             window.location.reload();
         } catch (error) {
-            console.error('Błąd w dodawaniu seansu:', error);
             alert('Nie udało się dodać seansu');
+            throw error;
         }
     };
     if (localStorage.getItem('authorities') === "ROLE_WORKER") {
@@ -91,7 +96,7 @@ const WorkerAddScreening = () =>{
 
                     <label>
                         <p onChange={handleCinemaChange} id="add-screening-input">
-                            <option value="">Id twojego kina: {selectedCinema}</option>
+                            <option value="">Twoje kino: {cinemaAddress}</option>
                         </p>
                     </label>
                     <br/>

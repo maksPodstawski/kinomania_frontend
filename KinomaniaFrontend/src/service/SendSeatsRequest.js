@@ -7,7 +7,6 @@ async function SendSeatsRequest(roomid) {
         const response = await axios.get(url);
         return response.data;
     } catch (error) {
-        console.error("Error fetching screenings:", error);
         throw error;
     }
 }

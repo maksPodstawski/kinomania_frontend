@@ -1,0 +1,9 @@
+.payment-page-container{
+    display: flex;
+    flex-direction: column;
+    margin: 150px;
+}
+
+.payment-page-button{
+    margin-top: 10px;
+}

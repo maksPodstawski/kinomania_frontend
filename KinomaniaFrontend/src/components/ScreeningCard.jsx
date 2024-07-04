@@ -16,7 +16,7 @@ const ScreeningCard = ({ screening, additionalDates }) => {
                 const cinemaData = await SendMovieByIdRequest(movieId);
                 setCinemaObject(cinemaData);
             } catch (error) {
-                console.error("Error fetching cinema object:", error);
+                throw error
             }
         };
 

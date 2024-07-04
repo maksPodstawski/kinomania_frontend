@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {redirect, useLocation, useNavigate} from 'react-router-dom';
 import handlePaymentSuccess from '../service/handlePaymentSuccess.js';
 import axios from "axios";
+import Header from "../components/Header.jsx";
+import "../styles/successPaymentStyle.css"
 
 const PaymentSuccessPage = () => {
     const location = useLocation();
@@ -21,27 +23,29 @@ const PaymentSuccessPage = () => {
                 const res = await handlePaymentSuccess(paymentId, payerID);
                 setResponse(res);
             } catch (error) {
-                console.error("Error fetching payment:", error);
+                throw error;
             }
         }
 
         fetchPayment();
     }, [paymentId, payerID]);
 
-    const handleHome = ()=>{
+    const handleHome = () => {
         navigate('/');
     }
 
     return (
         <div>
-            {response && response.status === 'success' ? (
-                <>
-                    <p>Płatność powiodła się</p>
-                    <button onClick={handleHome}>Wróć na stronę główną</button>
-                </>
-            ) : (
-                <p>Płatność nie powiodła się</p>
-            )}
+            <Header/>
+            <div className="success-container">
+                {response && response.status === 'success' ? (
+                    <>
+                        <p className="success-text">Płatność powiodła się</p>
+                        <button onClick={handleHome}>Wróć na stronę główną</button>
+                    </>
+                ) : (
+                    <p>Płatność nie powiodła się</p>
+                )}</div>
         </div>
     );
 };

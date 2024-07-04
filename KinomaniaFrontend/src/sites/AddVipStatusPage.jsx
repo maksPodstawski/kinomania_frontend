@@ -20,7 +20,6 @@ const AddVipStatusPage = () => {
     };
 
     const checkTimeSpan = () => {
-        console.log(`${start} - ${end}`);
         if (start.trim().length <= 0) {
             alert('Podaj datę rozpoczęcia');
             return false;
@@ -62,7 +61,6 @@ const AddVipStatusPage = () => {
         const response = await SendUpdateVipStatus(userID);
         const res = await SendUsersTicketsAmountRequest(timeSpan);
         setData(res);
-        console.log(response);
     }
 
     return (

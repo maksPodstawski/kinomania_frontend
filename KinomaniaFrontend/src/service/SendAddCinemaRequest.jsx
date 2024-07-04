@@ -22,12 +22,11 @@ const headers = {
 
 axios.post(url, CinemaData, {headers: headers})
     .then(response => {
-        console.log('Dodano kino:', response.data)
         alert("Dodano kino");
         refreshPage();
     })
     .catch(error => {
-        console.error('Błąd podczas dodawania kina:', error);
+        throw error;
     });
 }
 export default SendAddCinemaRequest;

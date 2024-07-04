@@ -13,7 +13,7 @@ const SendUsersRequest = async () => {
         const response = await axios.get(url, {headers: headers});
         return response.data;
     } catch (error) {
-        console.error('Błąd podczas pobierania użytkowników:', error);
+        throw error;
     }
 }
 

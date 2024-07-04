@@ -16,12 +16,11 @@ const SendSeatReservationRequest = async (screening_id, seats_id) => {
     }
 
     return  axios.post(url, dane, {headers: headers})
-        .then((odpowiedź) => {
-            console.log('Odpowiedź serwera:', odpowiedź.data);
-            return odpowiedź
+        .then((response) => {
+            return response
         })
-        .catch((błąd) => {
-            console.error('Błąd podczas wykonywania żądania POST:', błąd);
+        .catch((error) => {
+            throw error;
         });
 }
 export default SendSeatReservationRequest;

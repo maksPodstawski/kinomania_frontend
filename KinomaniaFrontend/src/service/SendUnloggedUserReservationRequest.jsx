@@ -4,12 +4,11 @@ const SendUnloggedUserReservationRequest = async (UserData)=>{
     const url = 'http://localhost:8080/api/v1/reservation/addUnLoggedUserReservation';
 
     return  axios.post(url, UserData )
-        .then((odpowiedź) => {
-            console.log('Odpowiedź serwera:', odpowiedź.data);
-            return odpowiedź
+        .then((response) => {
+            return response
         })
-        .catch((błąd) => {
-            console.error('Błąd podczas wykonywania żądania POST:', błąd);
+        .catch((error) => {
+            throw error;
         });
 
 

@@ -1,6 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import SendReservationCancel from "../service/SendReservationCancel.js";
+import Header from "../components/Header.jsx";
+import "../styles/cancelPaymentStyle.css"
 
 const CancelPaymentPage = () => {
 
@@ -9,21 +11,23 @@ const CancelPaymentPage = () => {
     const navigate = useNavigate();
 
 
-
     const reservationUUID = searchParams.get('uuid');
 
-    const handleSubmit = ()=>{
+    const handleSubmit = () => {
         navigate("/");
     }
 
 
-    useEffect( () => {
-         SendReservationCancel(reservationUUID).then(r => console.log(r));
+    useEffect(() => {
+       SendReservationCancel(reservationUUID);
     }, []);
-    return(
+    return (
         <>
-            <p>Anulowano zamówienie: {reservationUUID}</p>
-            <button onClick={handleSubmit} type="submit">Wróć na stronę główną</button>
+            <Header/>
+            <div className="cancel-payment-container">
+                <p className="success-text">Pomyślnie anulowano twoją rezerwację</p>
+                <button onClick={handleSubmit} type="submit">Wróć na stronę główną</button>
+            </div>
         </>
     )
 }

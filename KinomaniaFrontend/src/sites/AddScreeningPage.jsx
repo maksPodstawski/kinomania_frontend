@@ -25,7 +25,7 @@ function AddScreeningPage() {
                 setMovies(moviesResponse.data);
                 setCinemas(cinemasResponse.data);
             } catch (error) {
-                console.error('Error fetching movies and cinemas:', error);
+                throw error;
             }
         };
         fetchMoviesAndCinemas();
@@ -39,7 +39,7 @@ function AddScreeningPage() {
                     setRooms(roomsResponse.data);
                     setSelectedRoom('');
                 } catch (error) {
-                    console.error('Error fetching rooms:', error);
+                    throw error;
                 }
             } else {
                 setRooms([]);
@@ -82,7 +82,10 @@ function AddScreeningPage() {
             return;
         }
 
-
+        if(datetime < Date.now()) {
+            alert("Nie można ustawić seansu w przeszłośći");
+            return;
+        }
 
         const token = localStorage.getItem('token');
         const headers = {
@@ -104,8 +107,8 @@ function AddScreeningPage() {
             alert('Seans dodano poprawnie');
             window.location.reload();
         } catch (error) {
-            console.error('Błąd w dodawaniu seansu:', error);
             alert('Nie udało się dodać seansu');
+            throw error;
         }
     };
 

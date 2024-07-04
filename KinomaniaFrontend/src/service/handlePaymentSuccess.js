@@ -8,10 +8,8 @@ const handlePaymentSuccess = async (paymentId, payerId) => {
                 PayerID: payerId
             }
         });
-        console.log('Response:', response.data);
         return response.data;
     } catch (error) {
-        console.error('Error during payment:', error);
         throw error;
     }
 };

@@ -21,12 +21,11 @@ const SendRemoveCinemaRequest = async (cinemaCity, cinemaAddress) => {
 
     axios.post(url, CinemaData, {headers: headers})
         .then(response => {
-            console.log('Usunieto kino:', response.data)
             alert("Usuniętno kino");
             refreshPage();
         })
         .catch(error => {
-            console.error('Błąd podczas usuwania kina:', error);
+            throw error;
         });
 }
 export default SendRemoveCinemaRequest;

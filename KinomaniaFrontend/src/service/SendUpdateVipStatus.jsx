@@ -12,11 +12,10 @@ const SendUpdateVipStatus = async (userID)=>{
 
     return  axios.put(url, "", {headers: headers})
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response
         })
         .catch((error) => {
-            console.error('Błąd podczas wykonywania żądania PUT:', error);
+            throw error;
         });
 }
 export default SendUpdateVipStatus;

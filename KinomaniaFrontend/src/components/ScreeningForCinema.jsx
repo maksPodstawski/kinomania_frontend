@@ -21,7 +21,7 @@ const ScreeningForCinema = ({ cinema }) => {
                 const screeningsData = await SendScreeningsRequest(city);
                 setScreenings(screeningsData);
             } catch (error) {
-                console.error("Error fetching screenings:", error);
+                throw error;
             }
         };
 
@@ -80,12 +80,6 @@ const ScreeningForCinema = ({ cinema }) => {
                         isClearable
                         placeholderText="Wybierz datę"
                     />
-                    {selectedDate && (
-                        <div style={{ marginTop: '20px' }}>
-                            <h2>Wybrana data:</h2>
-                            <p>{selectedDate.toLocaleDateString()}</p>
-                        </div>
-                    )}
                 </div>
 
                 <div>

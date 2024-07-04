@@ -12,11 +12,10 @@ function RemoveMoviePage() {
     const fetchMovies = async () => {
         try {
             const moviesData = await SendMoviesRequest();
-            console.log(moviesData);
             setMovies(moviesData);
             setSelectedMovie(moviesData[0].movie_id);
         } catch (error) {
-            console.error("Error fetching movies:", error);
+            throw error;
         }
     };
     useEffect(() => {
@@ -39,12 +38,11 @@ function RemoveMoviePage() {
 
         axios.put(url, {}, { headers: headers })
             .then(response => {
-                console.log('Film usunięty:', response.data);
                 fetchMovies();
                 alert("Usunięto film");
             })
             .catch(error => {
-                console.error('Błąd podczas usuwania filmu:', error);
+                throw error;
             });
     }
 

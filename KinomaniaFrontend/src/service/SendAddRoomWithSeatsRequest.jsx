@@ -12,7 +12,6 @@ const SendAddRoomWithSeatsRequest = (seatsAndRoomDTO) => {
     return axios.post(url, seatsAndRoomDTO, { headers })
         .then(response => response.data)
         .catch(error => {
-            console.error("Error adding room with seats:", error);
             throw error;
         });
 };

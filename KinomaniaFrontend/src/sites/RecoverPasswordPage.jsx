@@ -20,7 +20,6 @@ const RecoverPasswordPage = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(email);
         if (!validateEmail(email)) {
             alert("Wprowadź poprawny adres email");
         } else {

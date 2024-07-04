@@ -13,22 +13,20 @@ export default async function SendTicketsPerCinemaRequest(timeSpan){
     const url = baseURL + '/api/v1/report/ticketsPerCinema';
     return  axios.post(url,timeSpan,{headers: headers})
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response.data
         })
         .catch((error) => {
-            console.error('Błąd podczas wykonywania żądania POST:', error);
+            throw error;
         });
 }
 export async function SendTicketsPerMovieRequest(timeSpan){
     const url = baseURL + '/api/v1/report/ticketsPerMovie';
     return  axios.post(url,timeSpan,{headers: headers})
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response.data
         })
         .catch((error) => {
-            console.error('Błąd podczas wykonywania żądania POST:', error);
+            throw error;
         });
 }
 
@@ -36,11 +34,10 @@ export async function SendIncomePerCinemaRequest(timeSpan) {
     const url = baseURL + '/api/v1/report/incomePerCinema';
     return axios.post(url, timeSpan, {headers: headers})
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response.data
         })
         .catch((error) => {
-            console.error('Błąd podczas wykonywania żądania POST:', error);
+            throw error;
         });
 }
 
@@ -48,11 +45,10 @@ export async function SendUsersTicketsAmountRequest(timeSpan) {
     const url = baseURL + '/api/v1/report/usersTicketsAmount';
     return axios.post(url, timeSpan, {headers: headers})
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response.data
         })
         .catch((error) => {
-            console.error('Błąd podczas wykonywania żądania POST:', error);
+            throw error;
         });
 }
 
@@ -78,7 +74,7 @@ export async function DownloadReport(timeSpan){
 
         document.body.removeChild(link);
     } catch (error) {
-        console.error('Błąd podczas pobierania raportu:', error);
+        throw error;
     }
 }
 

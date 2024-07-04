@@ -11,11 +11,10 @@ const GetUsersTicketAmount = async () => {
 
     return  axios.get(url,{headers: headers})
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response.data
         })
         .catch((error) => {
-            console.error('Błąd podczas wykonywania żądania GET:', error);
+            throw error;
         });
 }
 

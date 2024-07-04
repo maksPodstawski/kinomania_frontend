@@ -4,6 +4,7 @@ import '../styles/loggingPageStyles.css';
 import {jwtDecode} from 'jwt-decode';
 import {redirect, useNavigate} from 'react-router-dom';
 import LogRegHeader from "./LogRegHeader.jsx";
+import CheckVipStatus from "../service/CheckVipStatus.js";
 
 function LoginComponent() {
     const [login, setLogin] = useState('');
@@ -30,15 +31,19 @@ function LoginComponent() {
         const decoded = jwtDecode(token);
         localStorage.setItem('username', decoded['username']);
         localStorage.setItem('authorities', decoded['authorities']);
-        console.log(localStorage.getItem('authorities'));
     };
+
 
     const handleSubmit = async () => {
         const token = await SendLoginRequest(login, password);
-        setToken(token);
-        saveTokenToLocalStorage(token);
-        if (token !== '') {
-            navigate('/');
+        if (token) {
+            setToken(token);
+            saveTokenToLocalStorage(token);
+            if (token !== '') {
+                navigate('/');
+            }
+        }else{
+            alert("Nieprawidłowe dane logowania");
         }
     };
 

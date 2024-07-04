@@ -5,11 +5,10 @@ const SendUnloggedUserReservationWithPayment = async (UserData)=>{
 
     return  axios.post(url, UserData )
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response
         })
-        .catch((err) => {
-            console.error('Błąd podczas wykonywania żądania POST:', err);
+        .catch((error) => {
+            throw error;
         });
 }
 export default SendUnloggedUserReservationWithPayment;

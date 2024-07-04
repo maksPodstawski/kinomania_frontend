@@ -14,10 +14,9 @@ const CinemasPage = ({}) => {
         const fetchCinemas = async () => {
             try {
                 const cinemasData = await SendCinemasRequest();
-                console.log(cinemasData);
                 setCinemas(cinemasData);
             } catch (error) {
-                console.error("Error fetching movies:", error);
+                throw error;
             }
         };
 

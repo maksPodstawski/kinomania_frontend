@@ -14,10 +14,9 @@ function HomeSite() {
         const fetchMovies = async () => {
             try {
                 const moviesData = await SendMoviesRequest();
-                console.log(moviesData);
                 setMovies(moviesData);
             } catch (error) {
-                console.error("Error fetching movies:", error);
+                throw error;
             }
         };
 

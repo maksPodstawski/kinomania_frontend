@@ -2,6 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import '../styles/headerStyle.css'
 import kinomaniaLogo from '../assets/kinomanialogo.jpg';
+import vipLogo from '../assets/viplogo.png';
 
 
 const Header = () => {
@@ -42,6 +43,8 @@ const Header = () => {
                         <div className="header-logo">
                             <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                         </div>
+
+
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
                             <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>
@@ -78,6 +81,9 @@ const Header = () => {
                         <div className="header-logo">
                             <img src={kinomaniaLogo} alt="Kinomania Logo" id="logo" onClick={goHome}/>
                         </div>
+                        {localStorage.getItem('authorities') === 'ROLE_VIP' && (
+                            <img src={vipLogo} alt="Vip Logo" id="vip-logo"/>
+                        )}
                         <div className="header-buttons">
                             <h2>{localStorage.getItem('username')}</h2>
                             <button className="button-cinemas" onClick={goToMyTickets}>Moje Bilety</button>

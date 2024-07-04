@@ -12,11 +12,10 @@ const SendPasswordRecovery = (code, password)=>{
 
     return  axios.post(url, data)
         .then((response) => {
-            console.log('Odpowiedź serwera:', response.data);
             return response
         })
-        .catch((err) => {
-            console.error('Błąd podczas wykonywania żądania POST:', err);
+        .catch((error) => {
+            throw error;
         });
 
 
