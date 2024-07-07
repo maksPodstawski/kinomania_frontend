@@ -3,13 +3,14 @@ import axios from 'axios';
 
 const baseURL = 'http://localhost:8080';
 
-const token = localStorage.getItem('token');
 
-const headers = {
-    Authorization: `Bearer ${token}`,
-}
 
 export default async function SendTicketsPerCinemaRequest(timeSpan){
+    const token = localStorage.getItem('token');
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
     const url = baseURL + '/api/v1/report/ticketsPerCinema';
     return  axios.post(url,timeSpan,{headers: headers})
         .then((response) => {
@@ -20,6 +21,11 @@ export default async function SendTicketsPerCinemaRequest(timeSpan){
         });
 }
 export async function SendTicketsPerMovieRequest(timeSpan){
+    const token = localStorage.getItem('token');
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
     const url = baseURL + '/api/v1/report/ticketsPerMovie';
     return  axios.post(url,timeSpan,{headers: headers})
         .then((response) => {
@@ -31,6 +37,11 @@ export async function SendTicketsPerMovieRequest(timeSpan){
 }
 
 export async function SendIncomePerCinemaRequest(timeSpan) {
+    const token = localStorage.getItem('token');
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
     const url = baseURL + '/api/v1/report/incomePerCinema';
     return axios.post(url, timeSpan, {headers: headers})
         .then((response) => {
@@ -42,6 +53,11 @@ export async function SendIncomePerCinemaRequest(timeSpan) {
 }
 
 export async function SendUsersTicketsAmountRequest(timeSpan) {
+    const token = localStorage.getItem('token');
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
     const url = baseURL + '/api/v1/report/usersTicketsAmount';
     return axios.post(url, timeSpan, {headers: headers})
         .then((response) => {
@@ -54,6 +70,11 @@ export async function SendUsersTicketsAmountRequest(timeSpan) {
 
 
 export async function DownloadReport(timeSpan){
+    const token = localStorage.getItem('token');
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
     const downloadUrl = baseURL + '/api/v1/downloadReport';
     try {
         const response = await axios.post(downloadUrl, timeSpan, {

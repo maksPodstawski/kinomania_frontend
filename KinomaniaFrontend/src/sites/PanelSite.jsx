@@ -74,6 +74,7 @@ const PanelSite = () => {
                     <div className="panel-site">
                         <button onClick={handleAddEmployee} className="panel-button">Dodaj pracownika</button>
                     </div>
+                    <br/>
                     <div className="panel-site">
                         <button onClick={handleRaport} className="panel-button">System Raportowania</button>
                     </div>

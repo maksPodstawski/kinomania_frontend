@@ -14,7 +14,9 @@
     height: 450px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
-
+.movie-card-text{
+    color: white;
+}
 .movie-card:hover {
     box-shadow: 0 4px 8px rgb(0, 161, 230);
     transform: scale(1.05);
@@ -57,4 +59,8 @@
 
 .movie-info strong {
     font-weight: bold;
+}
+
+.movie-description{
+    color: white;
 }
